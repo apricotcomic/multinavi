@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopCoordinateTable extends Migration
+class CreateLandmarkCoordinatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateShopCoordinateTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_coordinate', function (Blueprint $table) {
+        Schema::create('landmark_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('floor_id');
             $table->double('x1_coordinate');
             $table->double('x2_coordinate');
             $table->double('y1_coordinate');
             $table->double('y2_coordinate');
-            $table->double('x_point_coordinate');
-            $table->double('y_point_coordinate');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateShopCoordinateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_coordinate');
+        Schema::dropIfExists('landmark_coordinates');
     }
 }

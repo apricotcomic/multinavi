@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFloorCoordinateTable extends Migration
+class CreateLandmarkDatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateFloorCoordinateTable extends Migration
      */
     public function up()
     {
-        Schema::create('floor_coordinate', function (Blueprint $table) {
+        Schema::create('landmark_datas', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('landmark_id');
-            $table->double('x1_coordinate');
-            $table->double('x2_coordinate');
-            $table->double('y1_coordinate');
-            $table->double('y2_coordinate');
-            $table->double('z_coordinate');
+            $table->string('landmark_name');
+            $table->string('address');
+            $table->string('zip');
+            $table->string('telephone_number');
+            $table->string('fax_number');
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateFloorCoordinateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('floor_coordinate');
+        Schema::dropIfExists('landmark_datas');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemDataTable extends Migration
+class CreateFloorDatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateItemDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_data', function (Blueprint $table) {
+        Schema::create('floor_datas', function (Blueprint $table) {
             $table->id();
-            $table->string('item_name');
-            $table->string('large_classification',5);
-            $table->string('middle_classification',5);
-            $table->string('small_classification',5);
-            $table->string('about');
+            $table->bigInteger('floor_id');
+            $table->string('floor_name');
+            $table->string('floor_mapfile');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateItemDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_data');
+        Schema::dropIfExists('floor_datas');
     }
 }

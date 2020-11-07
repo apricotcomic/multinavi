@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFloorDataTable extends Migration
+class CreateShopCoordinatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,15 @@ class CreateFloorDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('floor_data', function (Blueprint $table) {
+        Schema::create('shop_coordinates', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('floor_id');
-            $table->string('floor_name');
-            $table->string('floor_mapfile');
+            $table->double('x1_coordinate');
+            $table->double('x2_coordinate');
+            $table->double('y1_coordinate');
+            $table->double('y2_coordinate');
+            $table->double('x_point_coordinate');
+            $table->double('y_point_coordinate');
             $table->timestamps();
         });
     }
@@ -29,6 +33,6 @@ class CreateFloorDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('floor_data');
+        Schema::dropIfExists('shop_coordinates');
     }
 }
