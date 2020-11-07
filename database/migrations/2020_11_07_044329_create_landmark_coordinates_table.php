@@ -13,12 +13,13 @@ class CreateLandmarkCoordinatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('landmark_coordinates', function (Blueprint $table) {
+        Schema::connection('location')->create('landmark_coordinates', function (Blueprint $table) {
             $table->id();
             $table->double('x1_coordinate');
             $table->double('x2_coordinate');
             $table->double('y1_coordinate');
             $table->double('y2_coordinate');
+            $table->string('database');
             $table->timestamps();
         });
     }

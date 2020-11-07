@@ -13,7 +13,7 @@ class CreateItemDatasTable extends Migration
      */
     public function up()
     {
-        Schema::create('item_datas', function (Blueprint $table) {
+        Schema::connection('contents')->create('item_datas', function (Blueprint $table) {
             $table->id();
             $table->string('item_name');
             $table->string('large_classification',5);

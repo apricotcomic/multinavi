@@ -13,7 +13,7 @@ class CreateClassificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('classifications', function (Blueprint $table) {
+        Schema::connection('contents')->create('classifications', function (Blueprint $table) {
             $table->id();
             $table->string('large_classification',5);
             $table->string('large_classification_name');

@@ -13,7 +13,7 @@ class CreateShopCoordinatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_coordinates', function (Blueprint $table) {
+        Schema::connection('contents')->create('shop_coordinates', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('floor_id');
             $table->double('x1_coordinate');

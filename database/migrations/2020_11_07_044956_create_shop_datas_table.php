@@ -13,7 +13,7 @@ class CreateShopDatasTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_datas', function (Blueprint $table) {
+        Schema::connection('contents')->create('shop_datas', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('shop_id');
             $table->string('shop_name');

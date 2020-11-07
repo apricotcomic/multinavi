@@ -13,7 +13,7 @@ class CreateFloorDatasTable extends Migration
      */
     public function up()
     {
-        Schema::create('floor_datas', function (Blueprint $table) {
+        Schema::connection('contents')->create('floor_datas', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('floor_id');
             $table->string('floor_name');
