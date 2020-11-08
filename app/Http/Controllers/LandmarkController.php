@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LandmarkCoordinate;
+use App\Models\LandmarkData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LandmarkController extends Controller
 {
@@ -14,7 +17,11 @@ class LandmarkController extends Controller
     public function index()
     {
         //
-        $landmarks = \App\Models\LandmarkCoordinate::all();
+        //$landmarks = \App\Models\LandmarkCoordinate::all();
+        $landmarks = DB::connection('location')
+            ->table('landmark_coordinates')
+            ->join('landmark_data', 'landmark_coordinates.id', '=', 'landmark_id')
+            ->get();
         return view('landmark/index', compact('landmarks'));
     }
 
@@ -26,6 +33,7 @@ class LandmarkController extends Controller
     public function create()
     {
         //
+        return view('landmark.create');
     }
 
     /**
@@ -37,6 +45,29 @@ class LandmarkController extends Controller
     public function store(Request $request)
     {
         //
+        if($request->action === 'back') {
+            return redirect()->route('landmark.index');
+        } else {
+            // landmark_coordinates insert
+            $landmark_coordinate = new LandmarkCoordinate();
+            $landmark_coordinate->x1_coordinate = $request->x1;
+            $landmark_coordinate->x2_coordinate = $request->x2;
+            $landmark_coordinate->y1_coordinate = $request->y1;
+            $landmark_coordinate->y2_coordinate = $request->y2;
+            $landmark_coordinate->database = $request->database;
+            $landmark_coordinate->save();
+            // landmark_data insert
+            $landmark_data = new LandmarkData();
+            $landmark_data->landmark_id = $landmark_coordinate->id;
+            $landmark_data->landmark_name = $request->name;
+            $landmark_data->address = $request->address;
+            $landmark_data->zip = $request->zip;
+            $landmark_data->telephone_number = $request->tel;
+            $landmark_data->fax_number = $request->fax;
+            $landmark_data->email = $request->email;
+            $landmark_data->save();
+            return redirect()->route('landmark.index');
+        }
     }
 
     /**
