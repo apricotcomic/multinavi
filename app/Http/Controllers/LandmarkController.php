@@ -79,6 +79,14 @@ class LandmarkController extends Controller
     public function show($id)
     {
         //
+        $landmark = DB::connection('location')
+            ->table('landmark_coordinates')
+            ->join('landmark_data', function($join) use($id) {
+                $join->on('landmark_coordinates.id', '=', 'landmark_id')
+                    ->where('landmark_coordinates.id', '=', $id);
+            })
+            ->first();
+        return view('landmark/show', compact('landmark'));
     }
 
     /**
@@ -90,6 +98,14 @@ class LandmarkController extends Controller
     public function edit($id)
     {
         //
+        $landmark = DB::connection('location')
+            ->table('landmark_coordinates')
+            ->join('landmark_data', function($join) use($id) {
+                $join->on('landmark_coordinates.id', '=', 'landmark_id')
+                    ->where('landmark_coordinates.id', '=', $id);
+            })
+            ->first();
+        return view('landmark/edit', compact('landmark'));
     }
 
     /**
@@ -102,6 +118,29 @@ class LandmarkController extends Controller
     public function update(Request $request, $id)
     {
         //
+        if($request->action === 'back') {
+            return redirect()->route('landmark.index');
+        } else {
+            // landmark_coordinates insert
+            $landmark_coordinate = LandmarkCoordinate::find($id);
+            $landmark_coordinate->x1_coordinate = $request->x1;
+            $landmark_coordinate->x2_coordinate = $request->x2;
+            $landmark_coordinate->y1_coordinate = $request->y1;
+            $landmark_coordinate->y2_coordinate = $request->y2;
+            $landmark_coordinate->database = $request->database;
+            $landmark_coordinate->save();
+            // landmark_data insert
+            $landmark_data = LandmarkData::find($id);
+            $landmark_data->landmark_id = $landmark_coordinate->id;
+            $landmark_data->landmark_name = $request->name;
+            $landmark_data->address = $request->address;
+            $landmark_data->zip = $request->zip;
+            $landmark_data->telephone_number = $request->tel;
+            $landmark_data->fax_number = $request->fax;
+            $landmark_data->email = $request->email;
+            $landmark_data->save();
+            return redirect()->route('landmark.index');
+        }
     }
 
     /**
@@ -113,5 +152,10 @@ class LandmarkController extends Controller
     public function destroy($id)
     {
         //
+        $landmark_coordinate = LandmarkCoordinate::find($id);
+        $landmark_coordinate->delete();
+        $landmark_data = LandmarkData::find($id);
+        $landmark_data->delete();
+        return redirect()->route('landmark.index');
     }
 }
