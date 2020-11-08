@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\LandmarkController;
+use App\Http\Controllers\MenuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +23,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::resource('landmark', 'LandmarkController');
+Route::get('menu', [MenuController::class, 'menu'])->name('menu');
+
+Route::resource('landmark', LandmarkController::class);

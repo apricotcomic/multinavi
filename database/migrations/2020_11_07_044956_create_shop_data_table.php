@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopDatasTable extends Migration
+class CreateShopDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateShopDatasTable extends Migration
      */
     public function up()
     {
-        Schema::connection('contents')->create('shop_datas', function (Blueprint $table) {
+        Schema::connection('contents')->create('shop_data', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('shop_id');
             $table->string('shop_name');
@@ -29,6 +29,6 @@ class CreateShopDatasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_datas');
+        Schema::dropIfExists('shop_data');
     }
 }

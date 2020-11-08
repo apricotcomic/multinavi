@@ -14,6 +14,8 @@ class LandmarkController extends Controller
     public function index()
     {
         //
+        $landmarks = \App\Models\LandmarkCoordinate::all();
+        return view('landmark/index', compact('landmarks'));
     }
 
     /**

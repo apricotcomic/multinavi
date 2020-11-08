@@ -9,7 +9,7 @@ class LandmarkData extends Model
 {
     use HasFactory;
 
-    protected $table = 'landmark_data';
+    protected $connection = 'location';
 
     protected $guarded = [
         'id',

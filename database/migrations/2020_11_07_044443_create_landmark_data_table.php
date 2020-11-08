@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLandmarkDatasTable extends Migration
+class CreateLandmarkDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLandmarkDatasTable extends Migration
      */
     public function up()
     {
-        Schema::connection('location')->create('landmark_datas', function (Blueprint $table) {
+        Schema::connection('location')->create('landmark_data', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('landmark_id');
             $table->string('landmark_name');
@@ -33,6 +33,6 @@ class CreateLandmarkDatasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('landmark_datas');
+        Schema::connection('location')->dropIfExists('landmark_data');
     }
 }

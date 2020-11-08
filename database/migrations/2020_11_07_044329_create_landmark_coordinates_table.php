@@ -31,6 +31,6 @@ class CreateLandmarkCoordinatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('landmark_coordinates');
+        Schema::connection('location')->dropIfExists('landmark_coordinates');
     }
 }
