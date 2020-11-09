@@ -18,8 +18,7 @@ class LandmarkController extends Controller
     {
         //
         //$landmarks = \App\Models\LandmarkCoordinate::all();
-        $landmarks = DB::connection('location')
-            ->table('landmark_coordinates')
+        $landmarks = DB::table('location.landmark_coordinates')
             ->join('landmark_data', 'landmark_coordinates.id', '=', 'landmark_id')
             ->get();
         return view('landmark/index', compact('landmarks'));
@@ -79,8 +78,7 @@ class LandmarkController extends Controller
     public function show($id)
     {
         //
-        $landmark = DB::connection('location')
-            ->table('landmark_coordinates')
+        $landmark = DB::table('location.landmark_coordinates')
             ->join('landmark_data', function($join) use($id) {
                 $join->on('landmark_coordinates.id', '=', 'landmark_id')
                     ->where('landmark_coordinates.id', '=', $id);
@@ -98,8 +96,7 @@ class LandmarkController extends Controller
     public function edit($id)
     {
         //
-        $landmark = DB::connection('location')
-            ->table('landmark_coordinates')
+        $landmark = DB::table('location.landmark_coordinates')
             ->join('landmark_data', function($join) use($id) {
                 $join->on('landmark_coordinates.id', '=', 'landmark_id')
                     ->where('landmark_coordinates.id', '=', $id);

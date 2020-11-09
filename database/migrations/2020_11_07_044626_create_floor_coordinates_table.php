@@ -13,14 +13,14 @@ class CreateFloorCoordinatesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('contents')->create('floor_coordinates', function (Blueprint $table) {
+        Schema::connection('location')->create('floor_coordinates', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('landmark_id');
-            $table->double('x1_coordinate');
-            $table->double('x2_coordinate');
-            $table->double('y1_coordinate');
-            $table->double('y2_coordinate');
-            $table->double('z_coordinate');
+            $table->float('x1_coordinate');
+            $table->float('x2_coordinate');
+            $table->float('y1_coordinate');
+            $table->float('y2_coordinate');
+            $table->float('z_coordinate');
             $table->timestamps();
         });
     }

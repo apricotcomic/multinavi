@@ -9,6 +9,8 @@ class FloorCoordinate extends Model
 {
     use HasFactory;
 
+    protected $connection = 'location';
+
     protected $guarded = [
         'id',
         'created_at',

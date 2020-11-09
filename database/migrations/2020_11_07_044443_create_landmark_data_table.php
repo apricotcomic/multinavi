@@ -13,7 +13,7 @@ class CreateLandmarkDataTable extends Migration
      */
     public function up()
     {
-        Schema::connection('location')->create('landmark_data', function (Blueprint $table) {
+        Schema::connection('contents_ja')->create('landmark_data', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('landmark_id');
             $table->string('landmark_name');

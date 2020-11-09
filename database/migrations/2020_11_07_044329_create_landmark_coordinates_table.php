@@ -15,10 +15,10 @@ class CreateLandmarkCoordinatesTable extends Migration
     {
         Schema::connection('location')->create('landmark_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->double('x1_coordinate');
-            $table->double('x2_coordinate');
-            $table->double('y1_coordinate');
-            $table->double('y2_coordinate');
+            $table->float('x1_coordinate');
+            $table->float('x2_coordinate');
+            $table->float('y1_coordinate');
+            $table->float('y2_coordinate');
             $table->string('database');
             $table->timestamps();
         });

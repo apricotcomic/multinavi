@@ -13,15 +13,15 @@ class CreateShopCoordinatesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('contents')->create('shop_coordinates', function (Blueprint $table) {
+        Schema::connection('location')->create('shop_coordinates', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('floor_id');
-            $table->double('x1_coordinate');
-            $table->double('x2_coordinate');
-            $table->double('y1_coordinate');
-            $table->double('y2_coordinate');
-            $table->double('x_point_coordinate');
-            $table->double('y_point_coordinate');
+            $table->float('x1_coordinate');
+            $table->float('x2_coordinate');
+            $table->float('y1_coordinate');
+            $table->float('y2_coordinate');
+            $table->integer('x_point_coordinate');
+            $table->integer('y_point_coordinate');
             $table->timestamps();
         });
     }

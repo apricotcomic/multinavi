@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'contents'),
+    'default' => env('DB_CONNECTION', 'contents_ja'),
 
     /*
     |--------------------------------------------------------------------------
@@ -63,7 +63,7 @@ return [
             ]) : [],
         ],
 
-        'contents' => [
+        'contents_ja' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('CONTENTS_HOST', '127.0.0.1'),

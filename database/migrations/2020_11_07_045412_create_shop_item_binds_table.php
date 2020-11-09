@@ -13,7 +13,7 @@ class CreateShopItemBindsTable extends Migration
      */
     public function up()
     {
-        Schema::connection('contents')->create('shop_item_binds', function (Blueprint $table) {
+        Schema::connection('contents_ja')->create('shop_item_binds', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('shop_id');
             $table->bigInteger('item_id');
