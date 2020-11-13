@@ -18,6 +18,7 @@
                         <th>{{ __('Y Coordinate Start') }}</th>
                         <th>{{ __('Y Coordinate End') }}</th>
                         <th>{{ __('database') }}</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,6 +32,7 @@
                                 <td>{{ $landmark->y1_coordinate }}</td>
                                 <td>{{ $landmark->y2_coordinate}}</td>
                                 <td>{{ $landmark->database }}</td>
+                                <td><a href="/landmarkfloor/{{ $landmark->id }}">{{ __('floor') }}</a></td>
                             </tr>
                         @endforeach
                     @endif

@@ -15,7 +15,7 @@ class CreateShopCoordinatesTable extends Migration
     {
         Schema::connection('location')->create('shop_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('floor_id');
+            $table->bigInteger('floor_coordinate_id');
             $table->float('x1_coordinate');
             $table->float('x2_coordinate');
             $table->float('y1_coordinate');

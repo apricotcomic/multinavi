@@ -10,7 +10,7 @@
             <button type="submit" name="action" value="edit">
                 {{ __('edit') }}
             </button>
-            <button type="submit" onclick="history.back()">
+            <button type="submit" name="action" value="back">
                 {{ __('back') }}
             </button>
             <div>

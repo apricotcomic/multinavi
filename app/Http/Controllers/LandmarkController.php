@@ -17,9 +17,8 @@ class LandmarkController extends Controller
     public function index()
     {
         //
-        //$landmarks = \App\Models\LandmarkCoordinate::all();
         $landmarks = DB::table('location.landmark_coordinates')
-            ->join('landmark_data', 'landmark_coordinates.id', '=', 'landmark_id')
+            ->join('landmark_data', 'landmark_coordinates.id', '=', 'landmark_coordinate_id')
             ->get();
         return view('landmark/index', compact('landmarks'));
     }
@@ -57,7 +56,7 @@ class LandmarkController extends Controller
             $landmark_coordinate->save();
             // landmark_data insert
             $landmark_data = new LandmarkData();
-            $landmark_data->landmark_id = $landmark_coordinate->id;
+            $landmark_data->landmark_coordinate_id = $landmark_coordinate->id;
             $landmark_data->landmark_name = $request->name;
             $landmark_data->address = $request->address;
             $landmark_data->zip = $request->zip;
@@ -80,7 +79,7 @@ class LandmarkController extends Controller
         //
         $landmark = DB::table('location.landmark_coordinates')
             ->join('landmark_data', function($join) use($id) {
-                $join->on('landmark_coordinates.id', '=', 'landmark_id')
+                $join->on('landmark_coordinates.id', '=', 'landmark_coordinate_id')
                     ->where('landmark_coordinates.id', '=', $id);
             })
             ->first();
@@ -98,7 +97,7 @@ class LandmarkController extends Controller
         //
         $landmark = DB::table('location.landmark_coordinates')
             ->join('landmark_data', function($join) use($id) {
-                $join->on('landmark_coordinates.id', '=', 'landmark_id')
+                $join->on('landmark_coordinates.id', '=', 'landmark_coordinate_id')
                     ->where('landmark_coordinates.id', '=', $id);
             })
             ->first();
@@ -128,7 +127,7 @@ class LandmarkController extends Controller
             $landmark_coordinate->save();
             // landmark_data insert
             $landmark_data = LandmarkData::find($id);
-            $landmark_data->landmark_id = $landmark_coordinate->id;
+            $landmark_data->landmark_coordinate_id = $landmark_coordinate->id;
             $landmark_data->landmark_name = $request->name;
             $landmark_data->address = $request->address;
             $landmark_data->zip = $request->zip;
