@@ -32,7 +32,7 @@
                                 <td>{{ $landmark->y1_coordinate }}</td>
                                 <td>{{ $landmark->y2_coordinate}}</td>
                                 <td>{{ $landmark->database }}</td>
-                                <td><a href="/landmarkfloor/{{ $landmark->id }}">{{ __('floor') }}</a></td>
+                                <td><a href="{{ route('floor.index', [ 'landmark_coordinate_id' => $landmark->id]) }}">{{ __('floor') }}</a></td>
                             </tr>
                         @endforeach
                     @endif

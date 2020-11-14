@@ -5,7 +5,7 @@
     <body>
         <h2>Floor Index</h2>
         <div>
-            <button type=button onclick="location.href='{{ route('floor.create') }}'">{{ __('add') }}</button>
+            <button type=button onclick="location.href='{{ route('floor.create', ['landmark_coordinate_id' => $landmark_coordinate_id]) }}'">{{ __('add') }}</button>
             <input type=button value="{{ __('back') }}" onclick="history.back()">
             <br><br>
             <table>
@@ -24,8 +24,8 @@
                     @if(isset($floors))
                         @foreach ($floors as $floor)
                             <tr>
-                                <td><a href="/floor/{{ $floor->id }}">{{ $floor->id }}</a></td>
-                                <td><a href="/floor/{{ $floor->id }}">{{ $floor->floor_name }}</a></td>
+                                <td><a href="{{ route('floor.show', $floor->id )}}">{{ $floor->id }}</a></td>
+                                <td><a href="{{ route('floor.show', $floor->id )}}">{{ $floor->floor_name }}</a></td>
                                 <td>{{ $floor->x1_coordinate }}</td>
                                 <td>{{ $floor->x2_coordinate }}</td>
                                 <td>{{ $floor->y1_coordinate }}</td>

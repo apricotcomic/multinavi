@@ -5,7 +5,7 @@
     <body>
         <h2>Landmark Floor Index</h2>
         <div>
-            <button type=button onclick="location.href='{{ route('floor.create') }}'">{{ __('add') }}</button>
+            <button type=button onclick="location.href='/floor/create/{{ $landmark_coordinate_id }}'">{{ __('add') }}</button>
             <input type=button value="{{ __('back') }}" onclick="history.back()">
             <br><br>
             <table>
