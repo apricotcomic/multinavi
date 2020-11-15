@@ -26,6 +26,12 @@
             Floor Height:{{ $floor->z_coordinate }}<br>
 
         </div>
+        <br><br>
+        <input type="button" value="Shop Index"
+            onclick="location.href='{{ route('shop.index',
+                ['landmark_coordinate_id' => $floor->landmark_coordinate_id,
+                'floor_coordinate_id' => $floor->floor_coordinate_id,
+                ]) }}'">
         <table>
             <thead>
                 <tr>
