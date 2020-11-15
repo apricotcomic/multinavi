@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\FloorController;
+use App\Http\Controllers\ItemDataController;
 use App\Http\Controllers\LandmarkController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ShopController;
@@ -47,4 +48,7 @@ Route::put('shop/{shop_coordinate_id}', [ShopController::class, 'update'])->name
 Route::delete('shop/{shop_coordinate_id}', [ShopController::class, 'destroy'])->name('shop.destroy');
 
 Route::resource('classification', ClassificationController::class);
+
+Route::resource('itemdata', ItemDataController::class);
+
 

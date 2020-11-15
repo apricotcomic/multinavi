@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             // LandmarkDataTableSeeder::class,
             // FloorDataTableSeeder::class,
             // ShopDataTableSeeder::class,
-            ClassificationTableSeeder::class,
+            // ClassificationTableSeeder::class,
+            ItemDataTableSeeder::class,
         ]);
     }
 }
