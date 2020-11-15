@@ -22,6 +22,7 @@
                 Id:{{ $shop->id }}<br>
                 Name:{{ $shop->shop_name }}<br>
                 About:{{ $shop->about }}<br>
+                Floor:{{ $shop->floor_coordinate_id }}<br>
                 Longitude From:{{ $shop->x1_coordinate }} To:{{ $shop->x2_coordinate }}<br>
                 Latitude From:{{ $shop->y1_coordinate }} To:{{ $shop->y2_coordinate }}<br>
                 shop Flag:{{ $shop->x_point_coordinate }} / {{ $shop->y_point_coordinate }}<br>

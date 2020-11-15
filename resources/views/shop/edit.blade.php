@@ -18,6 +18,7 @@
                     Id:{{ $shop->id }}<br>
                     Name:<input type="text" name="name" value="{{ $shop->shop_name }}"><br>
                     About:<input type="text" name="about" value="{{ $shop->about }}"><br>
+                    Floor:<input type="text" name="floor" value="{{ $shop->floor_coordinate_id }}"><br>
                     Longitude From:<input type="text" name="x1" value="{{ $shop->x1_coordinate }}">
                     To:<input type="text" name="x2" value="{{ $shop->x2_coordinate }}"><br>
                     Latitude From:<input type="text" name="y1" value="{{ $shop->y1_coordinate }}">

@@ -54,7 +54,7 @@ class ShopController extends Controller
             // shop_coordinates insert
             $shop_coordinate = new ShopCoordinate();
             $shop_coordinate->landmark_coordinate_id = $request->landmark_coordinate_id;
-            $shop_coordinate->floor_coordinate_id = 0;
+            $shop_coordinate->floor_coordinate_id = $request->floor_coordinate_id;
             $shop_coordinate->x1_coordinate = $request->x1;
             $shop_coordinate->x2_coordinate = $request->x2;
             $shop_coordinate->y1_coordinate = $request->y1;
@@ -127,6 +127,7 @@ class ShopController extends Controller
         } else {
             // shop_coordinates insert
             $shop_coordinate = ShopCoordinate::find($id);
+            $shop_coordinate->floor_coordinate_id = $request->floor;
             $shop_coordinate->x1_coordinate = $request->x1;
             $shop_coordinate->x2_coordinate = $request->x2;
             $shop_coordinate->y1_coordinate = $request->y1;

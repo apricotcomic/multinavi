@@ -15,6 +15,7 @@
             <div>
                 Name:<input type="text" name="name"><br>
                 About:<input type="text" name="about"><br>
+                Floor:<input type="text" name="floor_coordinate_id"><br>
                 Longitude From:<input type="text" name="x1">
                 To:<input type="text" name="x2"><br>
                 Latitude From:<input type="text" name="y1">
