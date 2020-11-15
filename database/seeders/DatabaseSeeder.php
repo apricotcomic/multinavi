@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            LandmarkDataTableSeeder::class,
-            FloorDataTableSeeder::class,
-            ShopDataTableSeeder::class,
+            // LandmarkDataTableSeeder::class,
+            // FloorDataTableSeeder::class,
+            // ShopDataTableSeeder::class,
+            ClassificationTableSeeder::class,
         ]);
     }
 }

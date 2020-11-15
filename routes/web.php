@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\FloorController;
 use App\Http\Controllers\LandmarkController;
-use App\Http\Controllers\ShopController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,4 +46,5 @@ Route::get('shop/{shop_coordinate_id}/edit', [ShopController::class, 'edit'])->n
 Route::put('shop/{shop_coordinate_id}', [ShopController::class, 'update'])->name('shop.update');
 Route::delete('shop/{shop_coordinate_id}', [ShopController::class, 'destroy'])->name('shop.destroy');
 
+Route::resource('classification', ClassificationController::class);
 
