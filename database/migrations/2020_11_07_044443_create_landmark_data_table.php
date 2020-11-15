@@ -13,9 +13,9 @@ class CreateLandmarkDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('landmark_data', function (Blueprint $table) {
+        Schema::connection('contents_ja')->create('landmark_data', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('landmark_id');
+            $table->bigInteger('landmark_coordinate_id');
             $table->string('landmark_name');
             $table->string('address');
             $table->string('zip');
@@ -33,6 +33,6 @@ class CreateLandmarkDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('landmark_data');
+        Schema::connection('location')->dropIfExists('landmark_data');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLandmarkCoordinateTable extends Migration
+class CreateItemDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateLandmarkCoordinateTable extends Migration
      */
     public function up()
     {
-        Schema::create('landmark_coordinate', function (Blueprint $table) {
+        Schema::connection('contents_ja')->create('item_data', function (Blueprint $table) {
             $table->id();
-            $table->double('x1_coordinate');
-            $table->double('x2_coordinate');
-            $table->double('y1_coordinate');
-            $table->double('y2_coordinate');
+            $table->string('item_name');
+            $table->string('large_classification',5);
+            $table->string('middle_classification',5);
+            $table->string('small_classification',5);
+            $table->string('about');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateLandmarkCoordinateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('landmark_coordinate');
+        Schema::dropIfExists('item_data');
     }
 }
