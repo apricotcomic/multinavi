@@ -15,12 +15,14 @@ class CreateFloorCoordinatesTable extends Migration
     {
         Schema::connection('location')->create('floor_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('landmark_coordinate_id');
+            $table->increments('landmark_coordinate_id');
             $table->float('x1_coordinate');
             $table->float('x2_coordinate');
             $table->float('y1_coordinate');
             $table->float('y2_coordinate');
             $table->float('z_coordinate');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

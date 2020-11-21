@@ -15,6 +15,7 @@ class CreateFloorDataTable extends Migration
     {
         Schema::connection('contents_ja')->create('floor_data', function (Blueprint $table) {
             $table->id();
+            $table->increments('floor_id');
             $table->bigInteger('floor_coordinate_id');
             $table->string('floor_name');
             $table->string('floor_mapfile');

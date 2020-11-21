@@ -28,6 +28,8 @@ class LandmarkCoordinateFactory extends Factory
             'y1_coordinate' => $this->faker->longitude,
             'y2_coordinate' => $this->faker->longitude,
             'database' => $this->faker->word,
+            'start_date' => $this->faker->dateTimeBetween('-30day', '-3year'),
+            'end_date' => $this->faker->dateTimeBetween('+30day','+10year'),
         ];
     }
 }

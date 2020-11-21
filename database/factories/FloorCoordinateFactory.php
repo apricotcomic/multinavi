@@ -29,6 +29,8 @@ class FloorCoordinateFactory extends Factory
             'y1_coordinate' => $this->faker->longitude,
             'y2_coordinate' => $this->faker->longitude,
             'z_coordinate' => $this->faker->longitude,
+            'start_date' => $this->faker->dateTimeBetween('-30day', '-3year'),
+            'end_date' => $this->faker->dateTimeBetween('+30day','+10year'),
         ];
     }
 }

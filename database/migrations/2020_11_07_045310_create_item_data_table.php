@@ -20,6 +20,8 @@ class CreateItemDataTable extends Migration
             $table->string('middle_classification',5);
             $table->string('small_classification',5);
             $table->string('about');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

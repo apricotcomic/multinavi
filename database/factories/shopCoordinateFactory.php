@@ -31,6 +31,8 @@ class shopCoordinateFactory extends Factory
             'y2_coordinate' => $this->faker->longitude,
             'x_point_coordinate' => $this->faker->randomNumber,
             'y_point_coordinate' => $this->faker->randomNumber,
+            'start_date' => $this->faker->dateTimeBetween('-30day', '-3year'),
+            'end_date' => $this->faker->dateTimeBetween('+30day','+10year'),
         ];
     }
 }

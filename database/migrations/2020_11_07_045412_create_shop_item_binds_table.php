@@ -17,6 +17,8 @@ class CreateShopItemBindsTable extends Migration
             $table->id();
             $table->bigInteger('shop_id');
             $table->bigInteger('item_id');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
