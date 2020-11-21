@@ -17,10 +17,10 @@ class FloorController extends Controller
     public function index($landmark_coordinate_id)
     {
         //
-        $floors = DB::table('location.floor_coordinates')
+        $floors = DB::table('floor_coordinates')
             ->join('floor_data', function($join) use($landmark_coordinate_id) {
                 $join->on('floor_coordinates.id', '=', 'floor_coordinate_id')
-                    ->where('location.floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
+                    ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
             })
             ->get();
         return view('floor/index', compact('landmark_coordinate_id', 'floors'));
@@ -77,14 +77,14 @@ class FloorController extends Controller
     public function show($id)
     {
         //
-        $floor = DB::table('location.floor_coordinates')
+        $floor = DB::table('floor_coordinates')
             ->join('floor_data', function($join) use($id) {
                 $join->on('floor_coordinates.id', '=', 'floor_coordinate_id')
                     ->where('floor_coordinates.id', '=', $id);
             })
             ->first();
 
-        $shops = DB::table('location.shop_coordinates')
+        $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($floor) {
                 $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
                     ->where('shop_coordinates.floor_coordinate_id', '=', $floor->id);
@@ -102,14 +102,14 @@ class FloorController extends Controller
     public function edit($id)
     {
         //
-        $floor = DB::table('location.floor_coordinates')
+        $floor = DB::table('floor_coordinates')
         ->join('floor_data', function($join) use($id) {
             $join->on('floor_coordinates.id', '=', 'floor_coordinate_id')
                 ->where('floor_coordinates.id', '=', $id);
         })
         ->first();
 
-        $shops = DB::table('location.shop_coordinates')
+        $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($floor) {
                 $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
                     ->where('shop_coordinates.floor_coordinate_id', '=', $floor->id);

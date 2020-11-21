@@ -16,6 +16,6 @@ class ItemDataTableSeeder extends Seeder
     {
         //
         ItemData::factory()
-            ->times(100)->create();
+            ->times(1000)->create();
     }
 }

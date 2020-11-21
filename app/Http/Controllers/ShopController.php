@@ -18,10 +18,10 @@ class ShopController extends Controller
     public function index($landmark_coordinate_id, $floor_coordinate_id)
     {
         //
-        $shops = DB::table('location.shop_coordinates')
+        $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($landmark_coordinate_id) {
                 $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
-                    ->where('location.shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
+                    ->where('shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
             })
             ->orderby('floor_coordinate_id')
             ->get();
@@ -84,7 +84,7 @@ class ShopController extends Controller
     public function show($id)
     {
         //
-        $shop = DB::table('location.shop_coordinates')
+        $shop = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($id) {
                 $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
                     ->where('shop_coordinates.id', '=', $id);
@@ -102,7 +102,7 @@ class ShopController extends Controller
     public function edit($id)
     {
         //
-        $shop = DB::table('location.shop_coordinates')
+        $shop = DB::table('shop_coordinates')
         ->join('shop_data', function($join) use($id) {
             $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
                 ->where('shop_coordinates.id', '=', $id);

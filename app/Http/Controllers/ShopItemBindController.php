@@ -24,10 +24,10 @@ class ShopItemBindController extends Controller
         //
         $customer_id = Auth::user()->customer_id;
         $landmark_coordinate_id = CustomerLandmarkBind::where('customer_id', $customer_id)->first();
-        $shops = DB::table('location.shop_coordinates')
+        $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($landmark_coordinate_id) {
                 $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
-                    ->where('location.shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
+                    ->where('shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
             })
             ->get();
         return view('shopitembind.index', compact('landmark_coordinate_id', 'shops'));
@@ -42,7 +42,7 @@ class ShopItemBindController extends Controller
     public function show($id)
     {
         //
-        $shop = DB::table('location.shop_coordinates')
+        $shop = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($id) {
                 $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
                     ->where('shop_coordinates.id', '=', $id);
@@ -83,7 +83,7 @@ class ShopItemBindController extends Controller
     public function edit($id)
     {
         //
-        $shop = DB::table('location.shop_coordinates')
+        $shop = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($id) {
                 $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
                     ->where('shop_coordinates.id', '=', $id);
