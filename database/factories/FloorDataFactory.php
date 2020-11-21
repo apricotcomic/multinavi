@@ -24,6 +24,7 @@ class FloorDataFactory extends Factory
     {
         return [
             //
+            'floor_id' => $this->id,
             'floor_coordinate_id' => FloorCoordinate::factory(),
             'floor_name' => $this->faker->word,
             'floor_mapfile' => $this->faker->word,

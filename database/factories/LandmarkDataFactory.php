@@ -24,6 +24,7 @@ class LandmarkDataFactory extends Factory
     {
         return [
             //
+            'landmark_id' => $this->id,
             'landmark_coordinate_id' => LandmarkCoordinate::factory(),
             'landmark_name' => $this->faker->word,
             'address' => $this->faker->address,

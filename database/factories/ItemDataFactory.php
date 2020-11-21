@@ -23,6 +23,7 @@ class ItemDataFactory extends Factory
     {
         return [
             //
+            'item_id' => $this->id,
             'item_name' => $this->faker->word,
             'large_classification' => $this->faker->numberBetween($min=1, $max=10),
             'middle_classification' => $this->faker->numberBetween($min=1, $max=10),

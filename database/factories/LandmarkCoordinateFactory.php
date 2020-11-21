@@ -23,6 +23,7 @@ class LandmarkCoordinateFactory extends Factory
     {
         return [
             //
+            'landmark_coordinate_id' => $this->id,
             'x1_coordinate' => $this->faker->latitude,
             'x2_coordinate' => $this->faker->latitude,
             'y1_coordinate' => $this->faker->longitude,

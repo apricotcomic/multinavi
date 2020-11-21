@@ -23,6 +23,7 @@ class shopCoordinateFactory extends Factory
     {
         return [
             //
+            'shop_coordinate_id' => $this->id,
             'landmark_coordinate_id' =>  $this->faker->numberBetween($min=0, $max=9),
             'floor_coordinate_id' =>  $this->faker->numberBetween($min=0, $max=99),
             'x1_coordinate' => $this->faker->latitude,
