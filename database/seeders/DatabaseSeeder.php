@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             // FloorDataTableSeeder::class,
             // ShopDataTableSeeder::class,
             // ClassificationTableSeeder::class,
-            ItemDataTableSeeder::class,
+            // ItemDataTableSeeder::class,
+            ShopItemBindTableSeeder::class,
         ]);
     }
 }

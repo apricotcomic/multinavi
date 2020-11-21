@@ -9,6 +9,8 @@
             <br><br>
             <a href ="{{ route('classification.index') }}">Classification List</a><br>
             <a href ="{{ route('itemdata.index') }}">Item Data List</a><br>
+            <br>
+            <a href ="{{ route('shopitembind.index') }}">Shop Item Bind</a><br>
         </div>
     </body>
 </html>

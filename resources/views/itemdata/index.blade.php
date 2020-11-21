@@ -21,7 +21,7 @@
                 </thead>
                 <tbody>
                     @if(isset($items))
-                        @foreach ($items as $item)
+                        @foreach ($itemarray as $item)
                             <tr>
                                 <td><a href="{{ route('itemdata.show', $item->id )}}">{{ $item->id }}</a></td>
                                 <td><a href="{{ route('itemdata.show', $item->id )}}">{{ $item->item_name }}</a></td>
