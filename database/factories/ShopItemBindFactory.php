@@ -25,6 +25,8 @@ class ShopItemBindFactory extends Factory
             //
             'shop_id' => $this->faker->numberBetween($min=1, $max=1000),
             'item_id' => $this->faker->numberBetween($min=1, $max=100),
+            'start_date' => now(),
+            'end_date' => $this->faker->dateTimeBetween('+30day','+10year'),
         ];
     }
 }

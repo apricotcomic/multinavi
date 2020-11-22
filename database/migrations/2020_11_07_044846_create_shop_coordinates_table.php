@@ -13,9 +13,10 @@ class CreateShopCoordinatesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('location')
+        Schema::connection('contents_ja')
             ->create('shop_coordinates', function (Blueprint $table) {
                 $table->id();
+                $table->bigInteger('shop_coordinate_id');
                 $table->bigInteger('landmark_coordinate_id');
                 $table->bigInteger('floor_coordinate_id');
                 $table->float('x1_coordinate');
@@ -24,7 +25,7 @@ class CreateShopCoordinatesTable extends Migration
                 $table->float('y2_coordinate');
                 $table->integer('x_point_coordinate');
                 $table->integer('y_point_coordinate');
-                $table->date('start_end');
+                $table->date('start_date');
                 $table->date('end_date');
                 $table->timestamps();
         });

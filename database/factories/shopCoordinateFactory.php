@@ -23,7 +23,7 @@ class shopCoordinateFactory extends Factory
     {
         return [
             //
-            'shop_coordinate_id' => $this->id,
+            'shop_coordinate_id' => $this->faker->randomNumber(5),
             'landmark_coordinate_id' =>  $this->faker->numberBetween($min=0, $max=9),
             'floor_coordinate_id' =>  $this->faker->numberBetween($min=0, $max=99),
             'x1_coordinate' => $this->faker->latitude,
@@ -32,7 +32,7 @@ class shopCoordinateFactory extends Factory
             'y2_coordinate' => $this->faker->longitude,
             'x_point_coordinate' => $this->faker->randomNumber,
             'y_point_coordinate' => $this->faker->randomNumber,
-            'start_date' => $this->faker->dateTimeBetween('-30day', '-3year'),
+            'start_date' => now(),
             'end_date' => $this->faker->dateTimeBetween('+30day','+10year'),
         ];
     }

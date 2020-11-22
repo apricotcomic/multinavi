@@ -23,12 +23,15 @@ class ItemDataFactory extends Factory
     {
         return [
             //
-            'item_id' => $this->id,
+            'item_id' => $this->faker->randomNumber(5),
             'item_name' => $this->faker->word,
             'large_classification' => $this->faker->numberBetween($min=1, $max=10),
             'middle_classification' => $this->faker->numberBetween($min=1, $max=10),
             'small_classification' => $this->faker->numberBetween($min=1, $max=10),
             'about' => $this->faker->sentence,
+            'start_date' => now(),
+            'end_date' => $this->faker->dateTimeBetween('+30day','+10year'),
+
         ];
     }
 }

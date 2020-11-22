@@ -24,7 +24,7 @@ class shopDataFactory extends Factory
     {
         return [
             //
-            'shop_id' => $this->id,
+            'shop_id' => $this->faker->randomNumber(),
             'shop_coordinate_id' => ShopCoordinate::factory(),
             'shop_name' => $this->faker->word,
             'about' => $this->faker->sentence,
