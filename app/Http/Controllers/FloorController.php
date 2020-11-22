@@ -19,7 +19,7 @@ class FloorController extends Controller
         //
         $floors = DB::table('floor_coordinates')
             ->join('floor_data', function($join) use($landmark_coordinate_id) {
-                $join->on('floor_coordinates.id', '=', 'floor_coordinate_id')
+                $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
                     ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
             })
             ->get();
@@ -79,14 +79,14 @@ class FloorController extends Controller
         //
         $floor = DB::table('floor_coordinates')
             ->join('floor_data', function($join) use($id) {
-                $join->on('floor_coordinates.id', '=', 'floor_coordinate_id')
+                $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
                     ->where('floor_coordinates.id', '=', $id);
             })
             ->first();
 
         $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($floor) {
-                $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
+                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
                     ->where('shop_coordinates.floor_coordinate_id', '=', $floor->id);
             })
             ->get();
@@ -104,14 +104,14 @@ class FloorController extends Controller
         //
         $floor = DB::table('floor_coordinates')
         ->join('floor_data', function($join) use($id) {
-            $join->on('floor_coordinates.id', '=', 'floor_coordinate_id')
+            $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
                 ->where('floor_coordinates.id', '=', $id);
         })
         ->first();
 
         $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($floor) {
-                $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
+                $join->on('shop_coordinates.id', '=', 'shop.data.shop_coordinate_id')
                     ->where('shop_coordinates.floor_coordinate_id', '=', $floor->id);
             })
             ->get();

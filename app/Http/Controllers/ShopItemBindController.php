@@ -26,7 +26,7 @@ class ShopItemBindController extends Controller
         $landmark_coordinate_id = CustomerLandmarkBind::where('customer_id', $customer_id)->first();
         $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($landmark_coordinate_id) {
-                $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
+                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
                     ->where('shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
             })
             ->get();
@@ -44,7 +44,7 @@ class ShopItemBindController extends Controller
         //
         $shop = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($id) {
-                $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
+                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
                     ->where('shop_coordinates.id', '=', $id);
             })
             ->first();
@@ -85,7 +85,7 @@ class ShopItemBindController extends Controller
         //
         $shop = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($id) {
-                $join->on('shop_coordinates.id', '=', 'shop_coordinate_id')
+                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
                     ->where('shop_coordinates.id', '=', $id);
             })
             ->first();
@@ -135,7 +135,7 @@ class ShopItemBindController extends Controller
     {
         //
         if($request->action === 'back') {
-            return redirect()->route('shopitembind.index');
+            return redirect()->route('shopitembind.show',$id);
         } else {
             $chks = $request->input('chk');
             $checkeds = $request->input('checked');

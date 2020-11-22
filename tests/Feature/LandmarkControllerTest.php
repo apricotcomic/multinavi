@@ -7,21 +7,21 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class MenuControllerTest extends TestCase
+class LandmarkControllerTest extends TestCase
 {
     /**
-     * A basic feature test example.
+     * LandmarkController test .
      *
      * @test
      * @return void
      */
-    public function Menu_正常ログイン()
+    public function index_正常ケース ()
     {
         $user = User::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->get(route('menu'));
+            ->get(route('landmark.index'));
 
         $response->assertStatus(200);
     }

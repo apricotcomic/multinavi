@@ -18,7 +18,7 @@ class LandmarkController extends Controller
     {
         //
         $landmarks = DB::table('location.landmark_coordinates')
-            ->join('landmark_data', 'landmark_coordinates.id', '=', 'landmark_coordinate_id')
+            ->join('landmark_data', 'landmark_coordinates.id', '=', 'landmark_data.landmark_coordinate_id')
             ->get();
         return view('landmark/index', compact('landmarks'));
     }
