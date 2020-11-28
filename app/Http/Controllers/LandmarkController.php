@@ -53,6 +53,8 @@ class LandmarkController extends Controller
             $landmark_coordinate->y1_coordinate = $request->y1;
             $landmark_coordinate->y2_coordinate = $request->y2;
             $landmark_coordinate->database = $request->database;
+            $landmark_coordinate->start_date = $request->start_date;
+            $landmark_coordinate->end_date = $request->end_date;
             $landmark_coordinate->save();
             // landmark_data insert
             $landmark_data = new LandmarkData();
@@ -117,15 +119,17 @@ class LandmarkController extends Controller
         if($request->action === 'back') {
             return redirect()->route('landmark.index');
         } else {
-            // landmark_coordinates insert
+            // landmark_coordinates update
             $landmark_coordinate = LandmarkCoordinate::find($id);
             $landmark_coordinate->x1_coordinate = $request->x1;
             $landmark_coordinate->x2_coordinate = $request->x2;
             $landmark_coordinate->y1_coordinate = $request->y1;
             $landmark_coordinate->y2_coordinate = $request->y2;
             $landmark_coordinate->database = $request->database;
+            $landmark_coordinate->start_date = $request->start_date;
+            $landmark_coordinate->end_date = $request->end_date;
             $landmark_coordinate->save();
-            // landmark_data insert
+            // landmark_data update
             $landmark_data = LandmarkData::find($id);
             $landmark_data->landmark_coordinate_id = $landmark_coordinate->id;
             $landmark_data->landmark_name = $request->name;

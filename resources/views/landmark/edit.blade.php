@@ -26,6 +26,8 @@
                 Latitude From:<input type="text" name="y1" value="{{ $landmark->y1_coordinate }}">
                 To:<input type="text" name="y2" value="{{ $landmark->y2_coordinate }}"><br>
                 database:<input type="text" name="database" value="{{ $landmark->database }}"><br>
+                Start Date:<input type="datetime" name="start_date" value="{{ $landmark->start_date }}"><br>
+                End Date:<input type="datetime" name="end_date" value="{{ $landmark->end_date }}"><br>
             </div>
         </form>
     </body>

@@ -16,7 +16,6 @@ class CreateShopCoordinatesTable extends Migration
         Schema::connection('contents_ja')
             ->create('shop_coordinates', function (Blueprint $table) {
                 $table->id();
-                $table->bigInteger('shop_coordinate_id');
                 $table->bigInteger('landmark_coordinate_id');
                 $table->bigInteger('floor_coordinate_id');
                 $table->float('x1_coordinate');

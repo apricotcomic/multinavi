@@ -15,7 +15,6 @@ class CreateFloorCoordinatesTable extends Migration
     {
         Schema::connection('contents_ja')->create('floor_coordinates', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('floor_coordinate_id');
             $table->bigInteger('landmark_coordinate_id');
             $table->float('x1_coordinate');
             $table->float('x2_coordinate');
