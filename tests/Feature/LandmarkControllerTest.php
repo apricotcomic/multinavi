@@ -94,7 +94,7 @@ class LandmarkControllerTest extends TestCase
     }
 
     /**
-     * LandmarkController create test .
+     * LandmarkController show test .
      *
      * @test
      * @return void
@@ -112,7 +112,7 @@ class LandmarkControllerTest extends TestCase
     }
 
     /**
-     * LandmarkController create test .
+     * LandmarkController edit test .
      *
      * @test
      * @return void
@@ -130,7 +130,7 @@ class LandmarkControllerTest extends TestCase
     }
 
     /**
-     * LandmarkController create test .
+     * LandmarkController update test .
      *
      * @test
      * @return void
@@ -140,28 +140,8 @@ class LandmarkControllerTest extends TestCase
         $user = User::factory()->create();
         $landmark_data = LandmarkData::factory()->create();
 
-        $request = Request(
-            [
-                'id' => '1',
-                'name' => 'test name',
-                'zip' => '123-4567',
-                'address' => '東京都新宿区',
-                'tel' => '03-1234-5678',
-                'fax' => '03-9876-5432',
-                'email' => 'test@email.com',
-                'x1' => '111',
-                'x2' => '115',
-                'y1' => '55',
-                'y2' => '60',
-                'database' => 'contents_ja',
-                'start_date' => date('Y-m-d'),
-                'end_date' => '9999/12/31',
-            ],
-        );
-
         $response = $this
             ->actingAs($user)
-            ->withSession($request)
             ->put(route('landmark.update',['1',
                 'id' => '1',
                 'name' => 'test name',
@@ -182,6 +162,25 @@ class LandmarkControllerTest extends TestCase
 
         $response->assertStatus(302);
     }
+
+    /**
+     * LandmarkController destroy test .
+     *
+     * @test
+     * @return void
+     */
+    public function destroy_正常ケース ()
+    {
+        $user = User::factory()->create();
+        $landmark_data = LandmarkData::factory()->create();
+
+        $response = $this
+            ->actingAs($user)
+            ->get(route('landmark.destroy','1'));
+
+        $response->assertStatus(200);
+    }
+
 }
 
 
