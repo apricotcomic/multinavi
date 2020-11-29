@@ -57,6 +57,8 @@ class FloorController extends Controller
             $floor_coordinate->y1_coordinate = $request->y1;
             $floor_coordinate->y2_coordinate = $request->y2;
             $floor_coordinate->z_coordinate = $request->z;
+            $floor_coordinate->start_date = $request->start_date;
+            $floor_coordinate->end_date = $request->end_date;
             $floor_coordinate->save();
             // floor_data insert
             $floor_data = new floorData();
@@ -111,7 +113,7 @@ class FloorController extends Controller
 
         $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($floor) {
-                $join->on('shop_coordinates.id', '=', 'shop.data.shop_coordinate_id')
+                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
                     ->where('shop_coordinates.floor_coordinate_id', '=', $floor->id);
             })
             ->get();
@@ -138,6 +140,8 @@ class FloorController extends Controller
             $floor_coordinate->y1_coordinate = $request->y1;
             $floor_coordinate->y2_coordinate = $request->y2;
             $floor_coordinate->z_coordinate = $request->z;
+            $floor_coordinate->start_date = $request->start_date;
+            $floor_coordinate->end_date = $request->end_date;
             $floor_coordinate->save();
             // floor_data insert
             $floor_data = FloorData::where('floor_coordinate_id', $id)->first();

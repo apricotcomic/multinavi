@@ -28,6 +28,8 @@
             Longitude From:{{ $landmark->x1_coordinate }} To:{{ $landmark->x2_coordinate }}<br>
             Latitude From:{{ $landmark->y1_coordinate }} To:{{ $landmark->y2_coordinate }}<br>
             database:{{ $landmark->database }}<br>
+            start date:{{ $landmark->start_date }}<br>
+            end date:{{ $landmark->end_date }}<br>
         </div>
 
     </body>

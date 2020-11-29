@@ -2,29 +2,18 @@
 
 namespace Tests\Feature;
 
+use App\Models\FloorData;
 use App\Models\LandmarkData;
+use App\Models\ShopData;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class LandmarkControllerTest extends TestCase
+class FloorControllerTest extends TestCase
 {
-    /*use RefreshDatabase;
-
-    public function setUp(): void {
-        parent::setUp();
-
-    }
-
-    public function tearDown(): void {
-        Artisan::call('migrate:refresh');
-        parent::tearDown();
-    }
-    */
-
     /**
-     * LandmarkController index test .
+     * FloorController index test .
      *
      * @test
      * @return void
@@ -33,15 +22,18 @@ class LandmarkControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $landmark = LandmarkData::factory()->create();
+        FloorData::factory()->create();
+
         $response = $this
             ->actingAs($user)
-            ->get(route('landmark.index'));
+            ->get(route('floor.index',$landmark->id));
 
         $response->assertStatus(200);
     }
 
     /**
-     * LandmarkController create test .
+     * FloorController create test .
      *
      * @test
      * @return void
@@ -50,15 +42,18 @@ class LandmarkControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $landmark = LandmarkData::factory()->create();
+        FloorData::factory()->create();
+
         $response = $this
             ->actingAs($user)
-            ->get(route('landmark.create'));
+            ->get(route('floor.create',$landmark->id));
 
         $response->assertStatus(200);
     }
 
     /**
-     * LandmarkController store test .
+     * FloorController store test .
      *
      * @test
      * @return void
@@ -69,20 +64,16 @@ class LandmarkControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->post(route('landmark.store',
+            ->post(route('floor.store',
                 [
                     'landmark_coordinate_id' => '1',
-                    'name' => 'test name',
-                    'zip' => '123-4567',
-                    'address' => '東京都新宿区',
-                    'tel' => '03-1234-5678',
-                    'fax' => '03-9876-5432',
-                    'email' => 'test@email.com',
+                    'name' => 'test floor name',
+                    'file' => 'floor_map.png',
                     'x1' => '111',
                     'x2' => '115',
                     'y1' => '55',
                     'y2' => '60',
-                    'database' => 'contents_ja',
+                    'z' => '33',
                     'start_date' => date('Y-m-d'),
                     'end_date' => '9999/12/31',
                 ])
@@ -91,7 +82,7 @@ class LandmarkControllerTest extends TestCase
     }
 
     /**
-     * LandmarkController show test .
+     * FloorController show test .
      *
      * @test
      * @return void
@@ -99,17 +90,18 @@ class LandmarkControllerTest extends TestCase
     public function show_正常ケース ()
     {
         $user = User::factory()->create();
-        $landmark = LandmarkData::factory()->create();
+        LandmarkData::factory()->create();
+        $floor = FloorData::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->get('/landmark',['landmark' => $landmark->id]);
+            ->get(route('floor.show',$floor->id));
 
         $response->assertStatus(200);
     }
 
     /**
-     * LandmarkController edit test .
+     * FloorController edit test .
      *
      * @test
      * @return void
@@ -117,11 +109,13 @@ class LandmarkControllerTest extends TestCase
     public function edit_正常ケース ()
     {
         $user = User::factory()->create();
-        $landmark = LandmarkData::factory()->create();
+        LandmarkData::factory()->create();
+        $floor = FloorData::factory()->create();
+        ShopData::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->get('/landmark',['landmark' => $landmark->id]);
+            ->get(route('floor.edit',$floor->id));
 
         $response->assertStatus(200);
     }
@@ -135,23 +129,21 @@ class LandmarkControllerTest extends TestCase
     public function update_正常ケース ()
     {
         $user = User::factory()->create();
-        $landmark = LandmarkData::factory()->create();
+        LandmarkData::factory()->create();
+        $floor = FloorData::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->put(route('landmark.update',[$landmark->id,
+            ->put(route('floor.update',
+                [$floor->id,
                 'id' => '1',
-                'name' => 'test name',
-                'zip' => '123-4567',
-                'address' => '東京都新宿区',
-                'tel' => '03-1234-5678',
-                'fax' => '03-9876-5432',
-                'email' => 'test@email.com',
+                'name' => 'test floor name',
+                'file' => 'floor_update.png',
                 'x1' => '111',
                 'x2' => '115',
                 'y1' => '55',
                 'y2' => '60',
-                'database' => 'contents_ja',
+                'z' => '33',
                 'start_date' => date('Y-m-d'),
                 'end_date' => '9999/12/31',
                 ])
@@ -169,15 +161,13 @@ class LandmarkControllerTest extends TestCase
     public function destroy_正常ケース ()
     {
         $user = User::factory()->create();
-        $landmark = LandmarkData::factory()->create();
+        LandmarkData::factory()->create();
+        $floor = FloorData::factory()->create();
 
         $response = $this
             ->actingAs($user)
-            ->delete(route('landmark.destroy',$landmark->id));
+            ->delete(route('floor.destroy',$floor->id));
 
         $response->assertStatus(302);
     }
-
 }
-
-

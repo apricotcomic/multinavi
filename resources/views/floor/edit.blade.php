@@ -22,7 +22,8 @@
                 Latitude From:<input type="text" name="y1" value="{{ $floor->y1_coordinate }}">
                 To:<input type="text" name="y2" value="{{ $floor->y2_coordinate }}"><br>
                 Floor Height:<input type="text" name="z" value="{{ $floor->z_coordinate }}"><br>
-
+                StartDate:<input type="datetime" name="start_date"><br>
+                EndDate:<input type="datetime" name="end_date" value="9999/12/31"><br>
             </div>
         </form>
         <table>

@@ -61,6 +61,8 @@ class ShopController extends Controller
             $shop_coordinate->y2_coordinate = $request->y2;
             $shop_coordinate->x_point_coordinate = $request->x_point;
             $shop_coordinate->y_point_coordinate = $request->y_point;
+            $shop_coordinate->start_date = $request->start_date;
+            $shop_coordinate->end_date = $request->end_date;
             $shop_coordinate->save();
             // shop_data insert
             $shop_data = new shopData();
@@ -134,6 +136,8 @@ class ShopController extends Controller
             $shop_coordinate->y2_coordinate = $request->y2;
             $shop_coordinate->x_point_coordinate = $request->x_point;
             $shop_coordinate->y_point_coordinate = $request->y_point;
+            $shop_coordinate->start_date = $request->start_date;
+            $shop_coordinate->end_date = $request->end_date;
             $shop_coordinate->save();
             // shop_data insert
             $shop_data = ShopData::where('shop_coordinate_id', $id)->first();

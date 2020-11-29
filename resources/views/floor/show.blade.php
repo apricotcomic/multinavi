@@ -24,7 +24,8 @@
             Longitude From:{{ $floor->x1_coordinate }} To:{{ $floor->x2_coordinate }}
             Latitude From:{{ $floor->y1_coordinate }} To:{{ $floor->y2_coordinate }}<br>
             Floor Height:{{ $floor->z_coordinate }}<br>
-
+            start date:{{ $floor->start_date }}<br>
+            end date:{{ $floor->end_date }}<br>
         </div>
         <br><br>
         <input type="button" value="Shop Index"
