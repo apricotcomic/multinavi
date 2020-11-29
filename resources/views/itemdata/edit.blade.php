@@ -19,6 +19,8 @@
                 Middle Classification:<input type="text" name="middle_classification" value="{{ $item->middle_classification }}"><br>
                 Small Classification:<input type="text" name="small_classification" value="{{ $item->small_classification }}"><br>
                 About:<input type="text" name="about" value="{{ $item->about }}"><br>
+                StartDate:<input type="datetime" name="start_date"><br>
+                EndDate:<input type="datetime" name="end_date" value="9999/12/31"><br>
             </div>
         </form>
     </body>

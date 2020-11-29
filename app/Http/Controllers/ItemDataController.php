@@ -49,6 +49,8 @@ class ItemDataController extends Controller
             $itemdata->middle_classification = $request->middle_classification;
             $itemdata->small_classification = $request->small_classification;
             $itemdata->about = $request->about;
+            $itemdata->start_date = $request->start_date;
+            $itemdata->end_date = $request->end_date;
             $itemdata->save();
             return redirect()->route('itemdata.index');
         }
@@ -101,6 +103,8 @@ class ItemDataController extends Controller
             $itemdata->middle_classification = $request->middle_classification;
             $itemdata->small_classification = $request->small_classification;
             $itemdata->about = $request->about;
+            $itemdata->start_date = $request->start_date;
+            $itemdata->end_date = $request->end_date;
             $itemdata->save();
             return redirect()->route('itemdata.index');
         }

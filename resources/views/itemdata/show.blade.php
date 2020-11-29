@@ -23,6 +23,9 @@
             Middle Classification:{{ $item->middle_classification }}<br>
             Small Classification:{{ $item->small_classification }}<br>
             About:{{ $item->about }}<br>
+            StartDate:{{ $item->start_data }}<br>
+            EndDate:{{ $item->end_data }}<br>
+
         </div>
     </body>
 </html>
