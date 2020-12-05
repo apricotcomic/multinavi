@@ -21,7 +21,7 @@ class MenuControllerTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->get(route('menu'));
+            ->get(route('multinavi.menu'));
 
         $response->assertStatus(200);
     }

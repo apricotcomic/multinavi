@@ -28,7 +28,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-Route::get('menu', [MenuController::class, 'menu'])->name('menu');
+Route::get('menu', [MenuController::class, 'menu'])->name('multinavi.menu');
 
 Route::resource('landmark', LandmarkController::class);
 
