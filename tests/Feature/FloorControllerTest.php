@@ -139,6 +139,7 @@ class FloorControllerTest extends TestCase
                 'id' => '1',
                 'name' => 'test floor name',
                 'file' => 'floor_update.png',
+                'landmark_coordinate_id' => '1',
                 'x1' => '111',
                 'x2' => '115',
                 'y1' => '55',

@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\FloorCoordinate;
 use App\Models\FloorData;
+use App\Services\FloorService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class FloorController extends Controller
 {
+    private $floorservice;
+
+    public function __construct(FloorService $floor_service)
+    {
+        $this->floorservice = $floor_service;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -49,23 +57,10 @@ class FloorController extends Controller
         if($request->action === 'back') {
             return redirect()->route('floor.index');
         } else {
-            // floor_coordinates insert
+            //
             $floor_coordinate = new floorCoordinate();
-            $floor_coordinate->landmark_coordinate_id = $request->landmark_coordinate_id;
-            $floor_coordinate->x1_coordinate = $request->x1;
-            $floor_coordinate->x2_coordinate = $request->x2;
-            $floor_coordinate->y1_coordinate = $request->y1;
-            $floor_coordinate->y2_coordinate = $request->y2;
-            $floor_coordinate->z_coordinate = $request->z;
-            $floor_coordinate->start_date = $request->start_date;
-            $floor_coordinate->end_date = $request->end_date;
-            $floor_coordinate->save();
-            // floor_data insert
             $floor_data = new floorData();
-            $floor_data->floor_coordinate_id = $floor_coordinate->id;
-            $floor_data->floor_name = $request->name;
-            $floor_data->floor_mapfile = $request->file;
-            $floor_data->save();
+            $this->floorservice->writedata($request,$floor_coordinate,$floor_data);
             return redirect()->route('floor.index', ['landmark_coordinate_id' => $request->landmark_coordinate_id]);
         }
     }
@@ -133,21 +128,10 @@ class FloorController extends Controller
         if($request->action === 'back') {
             return redirect()->route('floor.index');
         } else {
-            // floor_coordinates insert
+            //
             $floor_coordinate = FloorCoordinate::find($id);
-            $floor_coordinate->x1_coordinate = $request->x1;
-            $floor_coordinate->x2_coordinate = $request->x2;
-            $floor_coordinate->y1_coordinate = $request->y1;
-            $floor_coordinate->y2_coordinate = $request->y2;
-            $floor_coordinate->z_coordinate = $request->z;
-            $floor_coordinate->start_date = $request->start_date;
-            $floor_coordinate->end_date = $request->end_date;
-            $floor_coordinate->save();
-            // floor_data insert
             $floor_data = FloorData::where('floor_coordinate_id', $id)->first();
-            $floor_data->floor_name = $request->name;
-            $floor_data->floor_mapfile = $request->file;
-            $floor_data->save();
+            $this->floorservice->writedata($request,$floor_coordinate,$floor_data);
             return redirect()->route('floor.index', ['landmark_coordinate_id' => $floor_coordinate->landmark_coordinate_id]);
         }
     }
