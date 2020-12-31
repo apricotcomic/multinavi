@@ -28,8 +28,8 @@ class FloorService {
             $floor_data->floor_mapfile = $request->file('file')->getClientOriginalName();
             $floor_data->save();
         // map
-            $file_path = $request->landmark_coordinate_id . 'floor';
-            $request->file('file')->storeAs('',$file_path . $floor_data->floor_mapfile);
+            $file_path = $request->landmark_coordinate_id . '/floor';
+            $request->file('file')->storeAs($file_path,$floor_data->floor_mapfile,'public');
         // commit
             DB::connection('location')->commit();
             DB::connection('contents_ja')->commit();
