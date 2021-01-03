@@ -5,6 +5,7 @@ use App\Http\Controllers\FloorController;
 use App\Http\Controllers\ItemDataController;
 use App\Http\Controllers\LandmarkController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ShopClassificationBindController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ShopItemBindController;
 use Illuminate\Support\Facades\Route;
@@ -56,3 +57,6 @@ Route::get('shopitembind/index', [ShopItemBindController::class, 'index'])->name
 Route::get('shopitembind/{id}', [ShopItemBindController::class, 'show'])->name('shopitembind.show');
 Route::get('shopitembind/{id}/edit', [ShopItemBindController::class, 'edit'])->name('shopitembind.edit');
 Route::put('shopitembind/{id}', [ShopItemBindController::class, 'update'])->name('shopitembind.update');
+
+Route::get('shopclassificationbind/{id}', [ShopClassificationBindController::class, 'show'])->name('shopclassificationbind.show');
+Route::get('shopclassificationbind/{id}/edit', [ShopClassificationBindController::class, 'edit'])->name('shopclassificationbind.edit');

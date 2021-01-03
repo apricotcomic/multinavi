@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 class ShopService {
     public function writedata(Request $request,$shop_coordinate,$shop_data)
     {
-        DB::connection('location')->beginTransaction();
         DB::connection('contents_ja')->beginTransaction();
         // floor_coordinates
         try {
@@ -31,10 +30,8 @@ class ShopService {
             $shop_data->about = $request->about;
             $shop_data->save();
             // commit
-            DB::connection('location')->commit();
             DB::connection('contents_ja')->commit();
         } catch (Exception $e) {
-            DB::connection('location')->rollback();
             DB::connection('contents_ja')->rollback();
         }
     }

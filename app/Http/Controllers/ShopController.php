@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FloorCoordinate;
+use App\Models\FloorData;
 use App\Models\ShopCoordinate;
 use App\Models\ShopData;
 use Illuminate\Http\Request;
@@ -33,10 +35,18 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($landmark_coordinate_id)
+    public function create($id)
     {
+        $landmark_coordinate_id = $id;
         //
-        return view('shop.create', ['landmark_coordinate_id' => $landmark_coordinate_id]);
+        $floors = DB::table('floor_coordinates')
+        ->join('floor_data', function($join) use($landmark_coordinate_id) {
+            $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
+                ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
+        })
+        ->pluck('floor_name','floor_data.id');
+
+        return view('shop.create', compact('landmark_coordinate_id','floors'));
     }
 
     /**
@@ -54,7 +64,7 @@ class ShopController extends Controller
             // shop_coordinates insert
             $shop_coordinate = new ShopCoordinate();
             $shop_coordinate->landmark_coordinate_id = $request->landmark_coordinate_id;
-            $shop_coordinate->floor_coordinate_id = $request->floor_coordinate_id;
+            $shop_coordinate->floor_coordinate_id = $request->floor_name;
             $shop_coordinate->x1_coordinate = $request->x1;
             $shop_coordinate->x2_coordinate = $request->x2;
             $shop_coordinate->y1_coordinate = $request->y1;

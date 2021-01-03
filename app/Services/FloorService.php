@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\DB;
 class FloorService {
     public function writedata(Request $request,$floor_coordinate,$floor_data)
     {
-        DB::connection('location')->beginTransaction();
         DB::connection('contents_ja')->beginTransaction();
         // floor_coordinates
         try {
@@ -31,10 +30,8 @@ class FloorService {
             $file_path = $request->landmark_coordinate_id . '/floor';
             $request->file('file')->storeAs($file_path,$floor_data->floor_mapfile,'public');
         // commit
-            DB::connection('location')->commit();
             DB::connection('contents_ja')->commit();
         } catch (Exception $e) {
-            DB::connection('location')->rollback();
             DB::connection('contents_ja')->rollback();
         }
 

@@ -29,6 +29,9 @@
                 <button type="button" onclick="location.href='{{ route('shopitembind.show',$shop->shop_coordinate_id) }}'">
                     {{ __('item_bind') }}
                 </button>
+                <button type="button" onclick="location.href='{{ route('shopclassificationbind.show',$shop->shop_coordinate_id) }}'">
+                    {{ __('classification_bind') }}
+                </button>
             @endif
         </div>
     </body>
