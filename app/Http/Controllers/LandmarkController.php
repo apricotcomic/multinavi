@@ -95,7 +95,7 @@ class LandmarkController extends Controller
                     ->where('landmark_coordinates.id', '=', $id);
             })
             ->first();
-        return view('landmark/edit', compact('landmark'));
+        return view('landmark/edit', compact('landmark','id'));
     }
 
     /**

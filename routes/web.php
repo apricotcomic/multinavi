@@ -59,4 +59,5 @@ Route::get('shopitembind/{id}/edit', [ShopItemBindController::class, 'edit'])->n
 Route::put('shopitembind/{id}', [ShopItemBindController::class, 'update'])->name('shopitembind.update');
 
 Route::get('shopclassificationbind/{id}', [ShopClassificationBindController::class, 'show'])->name('shopclassificationbind.show');
-Route::get('shopclassificationbind/{id}/edit', [ShopClassificationBindController::class, 'edit'])->name('shopclassificationbind.edit');
+Route::get('shopclassificationbind/edit', [ShopClassificationBindController::class, 'edit'])->name('shopclassificationbind.edit');
+Route::put('shopclassificationbind', [ShopClassificationBindController::class, 'update'])->name('shopclassificationbind.update');

@@ -1,10 +1,10 @@
 <x-layout>
     <h2>shop Item Bind Data</h2>
-    <form action="{{ route('shopitembind.update', $shop->id) }}" method="post">
+    <form action="{{ route('shopclassificationbind.update') }}" method="post">
         @csrf
         @method('PUT')
-        <button type="submit" name="action" value="edit">
-            {{ __('edit') }}
+        <button type="submit" name="action" value="update">
+            {{ __('update') }}
         </button>
         <button type="button" onclick="history.back()">
             {{ __('back') }}
@@ -23,14 +23,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if(isset($items))
-                        @foreach ($items as $item)
+                    @if(isset($classifications))
+                        @foreach ($classifications as $classification)
                             <tr>
                                 <td>
-                                    <input type="checkbox" name="chk[]" value="{{ $item->id }}" {{ $checked[$item->id] }}>
-                                    {{ $item->item_name }}
-                                    <input type="hidden" name="item_id[]" value="{{ $item->id }}">
-                                    <input type="hidden" name="checked[]" value="{{ $checked[$item->id] }}">
+                                    <input type="checkbox" name="chk[]" value="{{ $classification->id }}" {{ $checked[$classification->id] }}>
+                                    <input type="hidden" name="classification_id[]" value="{{ $classification->id }}">
+                                </td>
+                                <td>
+                                    {{ $classification->middle_classification_name }}
+                                </td>
+                                <td>
+                                    {{ $classification->small_classification_name }}
                                 </td>
                             </tr>
                         @endforeach

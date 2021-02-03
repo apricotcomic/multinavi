@@ -4,10 +4,10 @@
     </head>
     <body>
         <h2>Landmark Data</h2>
-        <form action="{{ route('landmark.destroy', $landmark->id) }}" method="post">
+        <form action="{{ route('landmark.destroy', $id) }}" method="post">
             @csrf
             @method('DELETE')
-            <button type="button" onclick="location.href='{{ route('landmark.edit', $landmark->id) }}'">
+            <button type="button" onclick="location.href='{{ route('landmark.edit', $id) }}'">
                 {{ __('update') }}
             </button>
             <button type="submit">

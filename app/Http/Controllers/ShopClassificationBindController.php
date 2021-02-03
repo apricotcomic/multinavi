@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classification;
 use App\Models\ShopClassificationBind;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,8 +30,11 @@ class ShopClassificationBindController extends Controller
     }
 
     //
-    public function edit($id)
+    public function edit()
     {
-
+        //
+        $classifications = Classification::all();
+        dd($classifications);
+        return view('shopclassificationbind/edit', compact('classifications'));
     }
 }
