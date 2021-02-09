@@ -1,26 +1,96 @@
 <x-layout>
-    <h2>floor Data</h2>
+    <h2  class="text-2xl">floor Data</h2>
     <form action="{{ route('floor.update', $floor->id) }}" method="post">
         @csrf
         @method('PUT')
-        <button type="submit" name="action" value="edit">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+         type="submit" name="action" value="edit">
             {{ __('edit') }}
         </button>
-        <button type="button" onclick="history.back()">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+         type="button" onclick="history.back()">
             {{ __('back') }}
         </button>
-        <div>
-            Id:<input type="text" name="id" value="{{ $floor->id }}"><br>
-            Name:<input type="text" name="name" value="{{ $floor->floor_name }}"><br>
-            Map File:<input type="text" name="file" value="{{ $floor->floor_mapfile }}"><br>
-            Longitude From:<input type="text" name="x1" value="{{ $floor->x1_coordinate }}">
-            To:<input type="text" name="x2" value="{{ $floor->x2_coordinate }}"><br>
-            Latitude From:<input type="text" name="y1" value="{{ $floor->y1_coordinate }}">
-            To:<input type="text" name="y2" value="{{ $floor->y2_coordinate }}"><br>
-            Floor Height:<input type="text" name="z" value="{{ $floor->z_coordinate }}"><br>
-            StartDate:<input type="datetime" name="start_date"><br>
-            EndDate:<input type="datetime" name="end_date" value="9999/12/31"><br>
-        </div>
+        <table>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">Id</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 px-2" type="text" name="id" value="{{ $floor->id }}">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">Name</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 px-2" type="text" name="name" value="{{ $floor->floor_name }}">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">Map File</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-96 px-2" type="text" name="file" value="{{ $floor->floor_mapfile }}">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">Longitude From</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="x1" value="{{ $floor->x1_coordinate }}">
+                </td>
+                <td class=" text-right">
+                    <span class="px-2 py-4">To</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="x2" value="{{ $floor->x2_coordinate }}">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">Latitude From</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="y1" value="{{ $floor->y1_coordinate }}">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">To</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="y2" value="{{ $floor->y2_coordinate }}">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">Floor Height</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="z" value="{{ $floor->z_coordinate }}">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">StartDate</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="datetime" name="start_date">
+                </td>
+            </tr>
+            <tr>
+                <td class=" text-right">
+                    <span class="px-2 py-4">EndDate</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="datetime" name="end_date" value="9999/12/31">
+                </td>
+            </tr>
+        </table>
     </form>
     <table>
         <thead>

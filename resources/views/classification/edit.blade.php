@@ -1,12 +1,14 @@
 <x-layout>
-    <h2>MultiNavi Classification Edit</h2>
+    <h2 class="text-2xl">MultiNavi Classification Edit</h2>
     <form action="{{ route('classification.update', $classification->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <button type="submit" name="action" value="edit">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+         type="submit" name="action" value="edit">
             {{ __('edit') }}
         </button>
-        <button type="submit" name="action" value="back">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+         type="submit" name="action" value="back">
             {{ __('back') }}
         </button>
         <div>

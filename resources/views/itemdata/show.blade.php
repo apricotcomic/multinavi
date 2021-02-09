@@ -1,16 +1,19 @@
 <x-layout>
-    <h2>MultiNavi ItemData Show</h2>
-    <button type="button" onclick="location.href='{{ route('itemdata.edit', $item->id) }}'">
+    <h2  class="text-2xl">MultiNavi ItemData Show</h2>
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+     type="button" onclick="location.href='{{ route('itemdata.edit', $item->id) }}'">
         {{ __('update') }}
     </button>
     <form action="{{ route('itemdata.destroy', $item->id) }}" method="post">
         @csrf
         @method('DELETE')
-        <button type="submit">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+         type="submit">
             {{ __('delete') }}
         </button>
     </form>
-    <button type="button" onclick="history.back()">
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+     type="button" onclick="history.back()">
         {{ __('back') }}
     </button>
     <div>

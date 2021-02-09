@@ -1,40 +1,42 @@
 <x-layout>
-    <h2>Shop Index</h2>
+    <h2  class="text-2xl">Shop Index</h2>
     <div>
-        <button type=button onclick="location.href='{{ route('shop.create', ['landmark_coordinate_id' => $landmark_coordinate_id]) }}'">{{ __('add') }}</button>
-        <input type=button value="{{ __('back') }}" onclick="history.back()">
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+         type=button onclick="location.href='{{ route('shop.create', ['landmark_coordinate_id' => $landmark_coordinate_id]) }}'">{{ __('add') }}</button>
+        <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+         type=button value="{{ __('back') }}" onclick="history.back()">
         <br><br>
         <table>
             <thead>
                 <tr>
-                    <th>{{ __('No') }}</th>
-                    <th>{{ __('Name') }}</th>
-                    <th>{{ __('Landmark') }}</th>
-                    <th>{{ __('Floor') }}</th>
-                    <th>{{ __('About') }}</th>
-                    <th>{{ __('X Coordinate Start') }}</th>
-                    <th>{{ __('X Coordinate End') }}</th>
-                    <th>{{ __('Y Coordinate Start') }}</th>
-                    <th>{{ __('Y Coordinate End') }}</th>
-                    <th>{{ __('X Point Coordinate') }}</th>
-                    <th>{{ __('Y Point Coordinate') }}</th>
+                    <th  class="border">{{ __('No') }}</th>
+                    <th  class="border">{{ __('Name') }}</th>
+                    <th  class="border">{{ __('Landmark') }}</th>
+                    <th  class="border">{{ __('Floor') }}</th>
+                    <th  class="border">{{ __('About') }}</th>
+                    <th  class="border">{{ __('X Coordinate Start') }}</th>
+                    <th  class="border">{{ __('X Coordinate End') }}</th>
+                    <th  class="border">{{ __('Y Coordinate Start') }}</th>
+                    <th  class="border">{{ __('Y Coordinate End') }}</th>
+                    <th  class="border">{{ __('X Point Coordinate') }}</th>
+                    <th  class="border">{{ __('Y Point Coordinate') }}</th>
                 </tr>
             </thead>
             <tbody>
                 @if(isset($shops))
                     @foreach ($shops as $shop)
                         <tr>
-                            <td><a href="{{ route('shop.show', $shop->shop_coordinate_id )}}">{{ $shop->shop_coordinate_id }}</a></td>
-                            <td><a href="{{ route('shop.show', $shop->shop_coordinate_id )}}">{{ $shop->shop_name }}</a></td>
-                            <td>{{ $shop->landmark_coordinate_id }}</td>
-                            <td>{{ $shop->floor_coordinate_id }}</td>
-                            <td>{{ $shop->about }}</td>
-                            <td>{{ $shop->x1_coordinate }}</td>
-                            <td>{{ $shop->x2_coordinate }}</td>
-                            <td>{{ $shop->y1_coordinate }}</td>
-                            <td>{{ $shop->y2_coordinate}}</td>
-                            <td>{{ $shop->x_point_coordinate }}</td>
-                            <td>{{ $shop->y_point_coordinate }}</td>
+                            <td  class="border"><a href="{{ route('shop.show', $shop->shop_coordinate_id )}}">{{ $shop->shop_coordinate_id }}</a></td>
+                            <td  class="border"><a href="{{ route('shop.show', $shop->shop_coordinate_id )}}">{{ $shop->shop_name }}</a></td>
+                            <td  class="border">{{ $shop->landmark_coordinate_id }}</td>
+                            <td  class="border">{{ $shop->floor_coordinate_id }}</td>
+                            <td  class="border">{{ $shop->about }}</td>
+                            <td  class="border">{{ $shop->x1_coordinate }}</td>
+                            <td  class="border">{{ $shop->x2_coordinate }}</td>
+                            <td  class="border">{{ $shop->y1_coordinate }}</td>
+                            <td  class="border">{{ $shop->y2_coordinate}}</td>
+                            <td  class="border">{{ $shop->x_point_coordinate }}</td>
+                            <td  class="border">{{ $shop->y_point_coordinate }}</td>
                         </tr>
                     @endforeach
                 @endif
