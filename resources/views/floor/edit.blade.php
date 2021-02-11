@@ -92,7 +92,7 @@
             </tr>
         </table>
     </form>
-    <table>
+    <table class="devide-y">
         <thead>
             <tr>
                 <th>{{ __('No') }}</th>
@@ -103,9 +103,9 @@
         <tbody>
             @if(isset($shops))
                 @foreach ($shops as $shop)
-                    <tr>
-                        <td><a href="/shop/{{ $shop->id }}">{{ $shop->id }}</a></td>
-                        <td>{{ $shop->shop_name }}</td>
+                    <tr class="devide-y">
+                        <td class="px-6 py-4"><a href="/shop/{{ $shop->id }}">{{ $shop->id }}</a></td>
+                        <td class="px-6 py-4">{{ $shop->shop_name }}</td>
                     </tr>
                 @endforeach
             @endif

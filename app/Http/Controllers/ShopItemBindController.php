@@ -140,7 +140,7 @@ class ShopItemBindController extends Controller
             $chks = $request->input('chk');
             $checkeds = $request->input('checked');
             $ides = $request->input('item_id');
-            foreach ($checkeds as $index => $checked) {
+            foreach ((array)$checkeds as $index => $checked) {
                 $check_data = $checked;
                 if ($check_data == 'checked="checked"') {
                     $flg_on = true;

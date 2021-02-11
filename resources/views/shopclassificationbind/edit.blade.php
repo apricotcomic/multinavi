@@ -3,11 +3,11 @@
     <form action="{{ route('shopclassificationbind.update') }}" method="post">
         @csrf
         @method('PUT')
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
          type="submit" name="action" value="update">
             {{ __('update') }}
         </button>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
          type="button" onclick="history.back()">
             {{ __('back') }}
         </button>
@@ -18,24 +18,24 @@
                 Name:{{ $shop->shop_name }}<br>
                 About:{{ $shop->about }}<br>
             @endif
-            <table>
+            <table class="divide-y">
                 <thead>
                     <tr>
-                        <th  class="border">{{ __('Name') }}</th>
+                        <th>{{ __('Name') }}</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="divide-y">
                     @if(isset($classifications))
                         @foreach ($classifications as $classification)
                             <tr>
-                                <td  class="border">
+                                <td>
                                     <input type="checkbox" name="chk[]" value="{{ $classification->id }}" {{ $checked[$classification->id] }}>
                                     <input type="hidden" name="classification_id[]" value="{{ $classification->id }}">
                                 </td>
-                                <td  class="border">
+                                <td>
                                     {{ $classification->middle_classification_name }}
                                 </td>
-                                <td  class="border">
+                                <td>
                                     {{ $classification->small_classification_name }}
                                 </td>
                             </tr>

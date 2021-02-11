@@ -11,14 +11,63 @@
          type="button" onclick="history.back()">
             {{ __('back') }}
         </button>
-        <div>
-            Item Name:<input type="text" name="item_name" value="{{ $item->item_name }}"><br>
-            Large Classification:<input type="text" name="large_classification" value="{{ $item->large_classification }}"><br>
-            Middle Classification:<input type="text" name="middle_classification" value="{{ $item->middle_classification }}"><br>
-            Small Classification:<input type="text" name="small_classification" value="{{ $item->small_classification }}"><br>
-            About:<input type="text" name="about" value="{{ $item->about }}"><br>
-            StartDate:<input type="datetime" name="start_date"><br>
-            EndDate:<input type="datetime" name="end_date" value="9999/12/31"><br>
-        </div>
+        <table>
+            <tr>
+                <td class="text-right">
+                    <span class="px-2 py-4">Item Name</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 px-2" type="text" name="item_name" value="{{ $item->item_name }}">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <span class="px-2 py-4">Large Classification</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="large_classification" value="{{ $item->large_classification }}">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <span class="px-2 py-4">Middle Classification</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="middle_classification" value="{{ $item->middle_classification }}">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <span class="px-2 py-4">Small Classification</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="small_classification" value="{{ $item->small_classification }}">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <span class="px-2 py-4">About</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="text" name="about" value="{{ $item->about }}">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <span class="px-2 py-4">StartDate</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="datetime" name="start_date">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <span class="px-2 py-4">EndDate</span>
+                </td>
+                <td>
+                    <input class="form-input h-8 w-28 px-2" type="datetime" name="end_date" value="9999/12/31">
+                </td>
+            </tr>
+        </table>
     </form>
 </x-layout>

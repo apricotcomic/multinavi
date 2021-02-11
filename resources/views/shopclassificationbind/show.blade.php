@@ -1,10 +1,10 @@
 <x-layout>
     <h2  class="text-2xl">Shop Classification Bind Data</h2>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
      type="button" onclick="location.href='{{ route('shopclassificationbind.edit') }}'">
         {{ __('Edit') }}
     </button>
-    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
      type="button" onclick="history.back()">
         {{ __('back') }}
     </button>
@@ -15,29 +15,29 @@
             Name:{{ $shop->shop_name }}<br>
             About:{{ $shop->about }}<br>
         @endif
-        <table>
+        <table class="divide-y">
             <thead>
                 <tr>
-                    <th  class="border">{{ __('CHK') }}</th>
-                    <th  class="border">{{ __('Large') }}</th>
-                    <th  class="border">{{ __('Middle') }}</th>
-                    <th  class="border">{{ __('Small') }}</th>
+                    <th>{{ __('CHK') }}</th>
+                    <th>{{ __('Large') }}</th>
+                    <th>{{ __('Middle') }}</th>
+                    <th>{{ __('Small') }}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="divide-y">
                 @if(isset($classifications))
                     @foreach ($classifications as $classification)
                         <tr>
-                            <td  class="border">
+                            <td>
                                 <input type="checkbox" name=" chk{{ $classification->id }}">
                             </td>
-                            <td  class="border">
+                            <td>
                                 {{ $classification->large_classification_name }}</a>
                             </td>
-                            <td  class="border">
+                            <td>
                                 {{ $classification->middle_classification_name }}</a>
                             </td>
-                            <td  class="border">
+                            <td>
                                 {{ $classification->small_classification_name }}</a>
                             </td>
                         </tr>

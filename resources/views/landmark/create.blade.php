@@ -11,7 +11,7 @@
         <br>
         <table>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Name</span>
                 </td>
                 <td>
@@ -19,7 +19,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Zip</span>
                 </td>
                 <td>
@@ -27,7 +27,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Address</span>
                 </td>
                 <td>
@@ -35,7 +35,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Telephone</span>
                 </td>
                 <td>
@@ -43,7 +43,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Fax</span>
                 </td>
                 <td>
@@ -51,7 +51,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Email</span>
                 </td>
                 <td>
@@ -59,13 +59,13 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Longitude From</span>
                 </td>
                 <td>
                     <input class="form-input h-8 w-28 px-2" type="text" name="x1">
                 </td>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">To</span>
                 </td>
                 <td>
@@ -73,13 +73,13 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">Latitude From</span>
                 </td>
                 <td>
                     <input class="form-input h-8 w-28 px-2" type="text" name="y1">
                 </td>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4 text-right">To</span>
                 </td>
                 <td>
@@ -87,7 +87,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">database</span>
                 </td>
                 <td>
@@ -95,7 +95,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">StartDate</span>
                 </td>
                 <td>
@@ -103,7 +103,7 @@
                 </td>
             </tr>
             <tr>
-                <td class=" text-right">
+                <td class="text-right">
                     <span class="px-2 py-4">EndDate</span>
                 </td>
                 <td>
