@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\contents_ja;
 
-use App\Models\FloorData;
+use App\Models\FloorCoordinate;
 use Illuminate\Database\Seeder;
 
-class FloorDataTableSeeder extends Seeder
+class FloorCoordinateTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class FloorDataTableSeeder extends Seeder
     public function run()
     {
         //
-        FloorData::factory()
+        FloorCoordinate::factory()
             ->times(100)->create();
     }
 }

@@ -4,7 +4,7 @@
         <button class="w-16 h-8 bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 text-center rounded"
          type=button onclick="location.href='{{ route('landmark.create') }}'">{{ __('add') }}</button>
         <input type=button class="w-16 h-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
-         value="{{ __('back') }}" onclick="history.back()">
+         value="{{ __('back') }}" onclick="location.href='{{ route('multinavi.menu') }}'">
         <br><br>
         <table class="divide-y">
             <thead>

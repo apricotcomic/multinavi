@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\contents_ja;
 
-use App\Models\LandmarkCoordinate;
+use App\Models\LandmarkData;
 use Illuminate\Database\Seeder;
 
-class LandmarkCoordinateTableSeeder extends Seeder
+class LandmarkDataTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,8 +15,7 @@ class LandmarkCoordinateTableSeeder extends Seeder
     public function run()
     {
         //
-        LandmarkCoordinate::factory()
+        LandmarkData::factory()
             ->times(10)->create();
     }
-
 }

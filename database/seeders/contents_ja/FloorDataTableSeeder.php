@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\contents_ja;
 
-use App\Models\Classification;
+use App\Models\FloorData;
 use Illuminate\Database\Seeder;
 
-class ClassificationTableSeeder extends Seeder
+class FloorDataTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class ClassificationTableSeeder extends Seeder
     public function run()
     {
         //
-        Classification::factory()
+        FloorData::factory()
             ->times(100)->create();
     }
 }

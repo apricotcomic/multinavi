@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\contents_ja;
 
 use App\Models\ShopItemBind;
 use Illuminate\Database\Seeder;

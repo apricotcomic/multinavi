@@ -16,7 +16,7 @@
                     <span class="px-2 py-4">Map File</span>
                 </td>
                 <td>
-                    <input class="form-input h-8 w-96 px-2" type="file" name="file">
+                    <input type="file" name="file">
                 </td>
             </tr>
             <tr>

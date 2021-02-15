@@ -6,10 +6,26 @@ use App\Models\Classification;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class ClassificationControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
+    public function setUp(): void {
+        parent::setUp();
+        /* Artisan::call('migrate:fresh --database=contents_ja --path=database/migrations/contents_ja');
+        Artisan::call('migrate:fresh --database=location --path=database/migrations/location');
+        */
+    }
+
+    public function tearDown(): void {
+        Artisan::call('migrate:refresh --database=contents_ja_test --path=database/migrations/contents_ja');
+        Artisan::call('migrate:refresh --database=location_test --path=database/migrations/location');
+        parent::tearDown();
+    }
+
     /**
      * ClassificationController index test .
      *

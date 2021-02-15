@@ -17,6 +17,8 @@ class AddCustomerToUsersTables extends Migration
             // customer_id add
             $table->bigInteger('customer_id')
                     ->after('password');
+            $table->string('db_key')
+                    ->after('customer_id');
         });
     }
 
@@ -30,6 +32,7 @@ class AddCustomerToUsersTables extends Migration
         Schema::table('users', function (Blueprint $table) {
             //
             $table->dropColumn('customer_id');
+            $table->dropColumn('db_key');
         });
     }
 }

@@ -12,7 +12,7 @@
             {{ __('delete') }}
         </button>
         <button class="w-16 h-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
-            type="button" onclick="history.back()">
+            type="button" onclick="location.href='{{ route('landmark.index') }}'">
             {{ __('back') }}
         </button>
     </form>

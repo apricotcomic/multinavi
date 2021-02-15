@@ -15,6 +15,7 @@ class CreateLandmarkCoordinatesTable extends Migration
     {
         Schema::connection('location')->create('landmark_coordinates', function (Blueprint $table) {
             $table->id();
+            $table->string('db_key',16);
             $table->float('x1_coordinate');
             $table->float('x2_coordinate');
             $table->float('y1_coordinate');

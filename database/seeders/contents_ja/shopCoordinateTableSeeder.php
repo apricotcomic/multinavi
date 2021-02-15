@@ -1,11 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\contents_ja;
 
-use App\Models\ItemData;
 use Illuminate\Database\Seeder;
 
-class ItemDataTableSeeder extends Seeder
+class shopCoordinateTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +14,7 @@ class ItemDataTableSeeder extends Seeder
     public function run()
     {
         //
-        ItemData::factory()
+        ShopCoordinate::factory()
             ->times(1000)->create();
     }
 }

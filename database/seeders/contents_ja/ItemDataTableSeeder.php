@@ -1,11 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\contents_ja;
 
-use App\Models\ShopData;
+use App\Models\ItemData;
 use Illuminate\Database\Seeder;
 
-class ShopDataTableSeeder extends Seeder
+class ItemDataTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class ShopDataTableSeeder extends Seeder
     public function run()
     {
         //
-        ShopData::factory()
+        ItemData::factory()
             ->times(1000)->create();
     }
 }

@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class LandmarkControllerTest extends TestCase
 {
-    /*use RefreshDatabase;
+    use RefreshDatabase;
 
     public function setUp(): void {
         parent::setUp();
@@ -18,10 +18,11 @@ class LandmarkControllerTest extends TestCase
     }
 
     public function tearDown(): void {
-        Artisan::call('migrate:refresh');
+        Artisan::call('migrate:refresh --database=contents_ja_test --path=database/migrations/contents_ja');
+        Artisan::call('migrate:refresh --database=location_test --path=database/migrations/location');
         parent::tearDown();
     }
-    */
+
 
     /**
      * LandmarkController index test .

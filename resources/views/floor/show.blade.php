@@ -1,23 +1,23 @@
 <x-layout>
     <h2  class="text-2xl">floor Data</h2>
-    <button class="w-20 h-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
-     type="button" onclick="location.href='{{ route('floor.edit', $floor->id) }}'">
-        {{ __('update') }}
-    </button>
     <form action="{{ route('floor.destroy', $floor->id) }}" method="post">
         @csrf
         @method('DELETE')
+        <button class="w-20 h-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+            type="button" onclick="location.href='{{ route('floor.edit', $floor->id) }}'">
+            {{ __('update') }}
+        </button>
         <button class="w-20 h-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded" type="submit">
             {{ __('delete') }}
         </button>
+        <button class="w-16 h-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
+            type="button" onclick="history.back()">
+            {{ __('back') }}
+        </button>
     </form>
-    <button class="w-16 h-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
-     type="button" onclick="history.back()">
-        {{ __('back') }}
-    </button>
     <table>
         <tr>
-            <td class=" text-right">
+            <td class="text-right">
                 <span class="px-2 py-4">Id</span>
             </td>
             <td>
@@ -25,15 +25,20 @@
             </td>
         </tr>
         <tr>
-            <td class=" text-right">
+            <td class="text-right">
                 <span class="px-2 py-4">Name</span>
             </td>
             <td>
                 {{ $floor->floor_name }}
             </td>
         </tr>
+    </table>
+    <div class="w-max h-auto">
+        <img src="{{ asset('storage/' . $floor->landmark_coordinate_id . '/floor/' . $floor->floor_mapfile) }}" >
+    </div>
+    <table>
         <tr>
-            <td class=" text-right">
+            <td class="text-right">
                 <span class="px-2 py-4">Map File</span>
             </td>
             <td>

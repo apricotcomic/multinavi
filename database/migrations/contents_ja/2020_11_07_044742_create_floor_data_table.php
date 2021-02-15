@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopClassificationBindsTable extends Migration
+class CreateFloorDataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateShopClassificationBindsTable extends Migration
      */
     public function up()
     {
-        Schema::create('shop_classification_binds', function (Blueprint $table) {
+        Schema::connection('contents_ja')->create('floor_data', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('shop_id');
-            $table->string('large_classification',5);
-            $table->string('middle_classification',5);
-            $table->string('small_classification',5);
+            $table->string('db_key',16);
+            $table->bigInteger('landmark_id');
+            $table->bigInteger('floor_coordinate_id');
+            $table->string('floor_name');
+            $table->string('floor_mapfile');
             $table->date('start_date');
             $table->date('end_date');
             $table->timestamps();
@@ -32,6 +33,6 @@ class CreateShopClassificationBindsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_classification_binds');
+        Schema::dropIfExists('floor_data');
     }
 }

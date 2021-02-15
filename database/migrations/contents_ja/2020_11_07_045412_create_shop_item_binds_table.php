@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShopDataTable extends Migration
+class CreateShopItemBindsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateShopDataTable extends Migration
      */
     public function up()
     {
-        Schema::connection('contents_ja')->create('shop_data', function (Blueprint $table) {
+        Schema::connection('contents_ja')->create('shop_item_binds', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('shop_coordinate_id');
-            $table->string('shop_name');
-            $table->string('about');
+            $table->string('db_key',16);
+            $table->bigInteger('shop_id');
+            $table->bigInteger('item_id');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateShopDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_data');
+        Schema::dropIfExists('shop_item_binds');
     }
 }
