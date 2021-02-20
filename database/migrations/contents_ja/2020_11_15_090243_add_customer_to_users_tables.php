@@ -17,7 +17,7 @@ class AddCustomerToUsersTables extends Migration
             // customer_id add
             $table->bigInteger('customer_id')
                     ->after('password');
-            $table->string('db_key')
+            $table->string('db_key', 16)
                     ->after('customer_id');
         });
     }

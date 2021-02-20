@@ -4,7 +4,7 @@
         <br>
         <a class="text-blue-500 underline text-lg" href ="{{ route('landmark.index') }}">Landmark List</a><br>
         <br>
-        <a class="text-blue-500 underline text-lg" href ="{{ route('shop.index') }}">Landmark List</a><br>
+        <a class="text-blue-500 underline text-lg" href ="{{ route('shop.index') }}">Shop List</a><br>
         <br>
         <a class="text-blue-500 underline text-lg" href ="{{ route('classification.index') }}">Classification List</a><br>
         <a class="text-blue-500 underline text-lg" href ="{{ route('itemdata.index') }}">Item Data List</a><br>

@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'customer_id',
+        'db_key',
         'password',
     ];
 

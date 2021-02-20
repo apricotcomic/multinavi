@@ -15,7 +15,7 @@ class CreateFloorDataTable extends Migration
     {
         Schema::connection('contents_ja')->create('floor_data', function (Blueprint $table) {
             $table->id();
-            $table->string('db_key',16);
+            $table->string('db_key', 16);
             $table->bigInteger('landmark_id');
             $table->bigInteger('floor_coordinate_id');
             $table->string('floor_name');

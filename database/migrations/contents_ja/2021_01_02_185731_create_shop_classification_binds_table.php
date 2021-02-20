@@ -15,7 +15,7 @@ class CreateShopClassificationBindsTable extends Migration
     {
         Schema::create('shop_classification_binds', function (Blueprint $table) {
             $table->id();
-            $table->string('db_key',16);
+            $table->string('db_key', 16);
             $table->bigInteger('shop_id');
             $table->string('large_classification',5);
             $table->string('middle_classification',5);

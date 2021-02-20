@@ -15,7 +15,7 @@ class CreateShopItemBindsTable extends Migration
     {
         Schema::connection('contents_ja')->create('shop_item_binds', function (Blueprint $table) {
             $table->id();
-            $table->string('db_key',16);
+            $table->string('db_key', 16);
             $table->bigInteger('shop_id');
             $table->bigInteger('item_id');
             $table->date('start_date');

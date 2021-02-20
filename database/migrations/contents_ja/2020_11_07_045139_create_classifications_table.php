@@ -15,7 +15,7 @@ class CreateClassificationsTable extends Migration
     {
         Schema::connection('contents_ja')->create('classifications', function (Blueprint $table) {
             $table->id();
-            $table->string('db_key0,16');
+            $table->string('db_key', 16);
             $table->string('large_classification',5);
             $table->string('large_classification_name');
             $table->string('middle_classification',5);
