@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\FloorCoordinate;
 use App\Models\FloorData;
 use App\Services\FloorService;
@@ -28,7 +29,8 @@ class FloorController extends Controller
         $floors = DB::table('floor_coordinates')
             ->join('floor_data', function($join) use($landmark_coordinate_id) {
                 $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
-                    ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
+                    ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id)
+                    ->where('floor_coordinates.db_key', '=', Auth::user()->db_key);
             })
             ->get();
         return view('floor/index', compact('landmark_coordinate_id', 'floors'));
@@ -77,14 +79,15 @@ class FloorController extends Controller
         $floor = DB::table('floor_coordinates')
             ->join('floor_data', function($join) use($id) {
                 $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
-                    ->where('floor_coordinates.id', '=', $id);
+                    ->where('floor_coordinates.id', '=', $id)
+                    ->where('floor_coordinates.db_key', '=', Auth::user()->db_key);
             })
             ->first();
 
         $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($floor) {
                 $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.floor_coordinate_id', '=', $floor->id);
+                    ->where('shop_coordinates.floor_coordinate_id', '=', $floor->floor_coordinate_id);
             })
             ->get();
         return view('floor/show', compact('floor', 'shops'));
@@ -102,8 +105,9 @@ class FloorController extends Controller
         $floor = DB::table('floor_coordinates')
         ->join('floor_data', function($join) use($id) {
             $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
-                ->where('floor_coordinates.id', '=', $id);
-        })
+                ->where('floor_coordinates.id', '=', $id)
+                ->where('floor_coordinates.db_key', '=', Auth::user()->db_key);
+            })
         ->first();
 
         $shops = DB::table('shop_coordinates')

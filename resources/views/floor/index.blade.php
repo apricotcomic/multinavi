@@ -22,8 +22,8 @@
                 @if(isset($floors))
                     @foreach ($floors as $floor)
                         <tr>
-                            <td class="px-6 py-4"><a href="{{ route('floor.show', $floor->id )}}">{{ $floor->id }}</a></td>
-                            <td class="px-6 py-4"><a href="{{ route('floor.show', $floor->id )}}">{{ $floor->floor_name }}</a></td>
+                            <td class="px-6 py-4"><a href="{{ route('floor.show', $floor->floor_coordinate_id )}}">{{ $floor->floor_coordinate_id }}</a></td>
+                            <td class="px-6 py-4"><a href="{{ route('floor.show', $floor->floor_coordinate_id )}}">{{ $floor->floor_name }}</a></td>
                             <td class="px-6 py-4">{{ $floor->x1_coordinate }}</td>
                             <td class="px-6 py-4">{{ $floor->x2_coordinate }}</td>
                             <td class="px-6 py-4">{{ $floor->y1_coordinate }}</td>

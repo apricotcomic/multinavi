@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\FloorCoordinate;
 use App\Models\FloorData;
 use App\Models\ShopCoordinate;
@@ -23,7 +24,8 @@ class ShopController extends Controller
         $shops = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($landmark_coordinate_id) {
                 $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
+                    ->where('shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id)
+                    ->where('shop_data.db_key', '=', Auth::user()->db_key);
             })
             ->orderby('floor_coordinate_id')
             ->get();
@@ -42,8 +44,9 @@ class ShopController extends Controller
         $floors = DB::table('floor_coordinates')
         ->join('floor_data', function($join) use($landmark_coordinate_id) {
             $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
-                ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id);
-        })
+                ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id)
+                ->where('shop_data.db_key', '=', Auth::user()->db_key);
+            })
         ->pluck('floor_name','floor_data.id');
 
         return view('shop.create', compact('landmark_coordinate_id','floors'));
@@ -77,6 +80,7 @@ class ShopController extends Controller
             // shop_data insert
             $shop_data = new shopData();
             $shop_data->shop_coordinate_id = $shop_coordinate->id;
+            $shop_data->db_key = Auth::user()->db_key;
             $shop_data->shop_name = $request->name;
             $shop_data->about = $request->about;
             $shop_data->save();
@@ -99,7 +103,8 @@ class ShopController extends Controller
         $shop = DB::table('shop_coordinates')
             ->join('shop_data', function($join) use($id) {
                 $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.id', '=', $id);
+                    ->where('shop_coordinates.id', '=', $id)
+                    ->where('shop_data.db_key', '=', Auth::user()->db_key);
             })
             ->first();
         return view('shop/show', compact('shop'));
@@ -117,7 +122,8 @@ class ShopController extends Controller
         $shop = DB::table('shop_coordinates')
         ->join('shop_data', function($join) use($id) {
             $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                ->where('shop_coordinates.id', '=', $id);
+                ->where('shop_coordinates.id', '=', $id)
+                ->where('shop_data.db_key', '=', Auth::user()->db_key);
         })
         ->first();
 

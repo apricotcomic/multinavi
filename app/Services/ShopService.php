@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Auth;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,7 @@ class ShopService {
         // floor_coordinates
         try {
             // shop_coordinates insert
+            $shop_coordinate->db_key = Auth::user()->db_key;
             $shop_coordinate->landmark_coordinate_id = $request->landmark_coordinate_id;
             $shop_coordinate->floor_coordinate_id = $request->floor_coordinate_id;
             $shop_coordinate->x1_coordinate = $request->x1;
@@ -25,6 +27,7 @@ class ShopService {
             $shop_coordinate->end_date = $request->end_date;
             $shop_coordinate->save();
             // shop_data insert
+            $shop_data->db_key = Auth::user()->db_key;
             $shop_data->shop_coordinate_id = $shop_coordinate->id;
             $shop_data->shop_name = $request->name;
             $shop_data->about = $request->about;

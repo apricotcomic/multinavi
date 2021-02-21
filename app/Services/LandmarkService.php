@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Auth;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,7 @@ class LandmarkService {
         DB::connection('contents_ja')->beginTransaction();
         try {
             // landmark_coordinates update
+            $landmark_coordinate->db_key = Auth::user()->db_key;
             $landmark_coordinate->x1_coordinate = $request->x1;
             $landmark_coordinate->x2_coordinate = $request->x2;
             $landmark_coordinate->y1_coordinate = $request->y1;
@@ -22,6 +24,7 @@ class LandmarkService {
             $landmark_coordinate->end_date = $request->end_date;
             $landmark_coordinate->save();
             // landmark_data update
+            $landmark_data->db_key = Auth::user()->db_key;
             $landmark_data->landmark_coordinate_id = $landmark_coordinate->id;
             $landmark_data->landmark_name = $request->name;
             $landmark_data->address = $request->address;

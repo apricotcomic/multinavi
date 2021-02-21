@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\LandmarkCoordinate;
 use App\Models\LandmarkData;
 use App\Services\LandmarkService;
@@ -27,7 +28,10 @@ class LandmarkController extends Controller
     {
         //
         $landmarks = DB::table('location.landmark_coordinates')
-            ->join('landmark_data', 'landmark_coordinates.id', '=', 'landmark_data.landmark_coordinate_id')
+            ->join('landmark_data', function($join) {
+                $join->on('landmark_coordinates.id', '=', 'landmark_data.landmark_coordinate_id')
+                    ->where('landmark_coordinates.db_key', '=', Auth::user()->db_key);
+            })
             ->get();
         return view('landmark/index', compact('landmarks'));
     }
@@ -74,7 +78,8 @@ class LandmarkController extends Controller
         $landmark = DB::table('location.landmark_coordinates')
             ->join('landmark_data', function($join) use($id) {
                 $join->on('landmark_coordinates.id', '=', 'landmark_coordinate_id')
-                    ->where('landmark_coordinates.id', '=', $id);
+                    ->where('landmark_coordinates.id', '=', $id)
+                    ->where('landmark_coordinates.db_key', '=', Auth::user()->db_key);
             })
             ->first();
 
@@ -93,7 +98,8 @@ class LandmarkController extends Controller
         $landmark = DB::table('location.landmark_coordinates')
             ->join('landmark_data', function($join) use($id) {
                 $join->on('landmark_coordinates.id', '=', 'landmark_coordinate_id')
-                    ->where('landmark_coordinates.id', '=', $id);
+                    ->where('landmark_coordinates.id', '=', $id)
+                    ->where('landmark_coordinates.db_key', '=', Auth::user()->db_key);
             })
             ->first();
         return view('landmark/edit', compact('landmark','id'));

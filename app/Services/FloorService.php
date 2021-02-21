@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use Auth;
 use Exception;
+use Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +14,7 @@ class FloorService {
         DB::connection('contents_ja')->beginTransaction();
         // floor_coordinates
         try {
+            $floor_coordinate->db_key = Auth::user()->db_key;
             $floor_coordinate->landmark_coordinate_id = $request->landmark_coordinate_id;
             $floor_coordinate->x1_coordinate = $request->x1;
             $floor_coordinate->x2_coordinate = $request->x2;
@@ -22,9 +25,13 @@ class FloorService {
             $floor_coordinate->end_date = $request->end_date;
             $floor_coordinate->save();
         // floor_data
+            $floor_data->db_key = Auth::user()->db_key;
+            $floor_data->landmark_coordinate_id = $request->landmark_coordinate_id;
             $floor_data->floor_coordinate_id = $floor_coordinate->id;
             $floor_data->floor_name = $request->name;
             $floor_data->floor_mapfile = $request->file('file')->getClientOriginalName();
+            $floor_data->start_date = $request->start_date;
+            $floor_data->end_date = $request->end_date;
             $floor_data->save();
         // map
             $file_path = $request->landmark_coordinate_id . '/floor';
@@ -33,6 +40,8 @@ class FloorService {
             DB::connection('contents_ja')->commit();
         } catch (Exception $e) {
             DB::connection('contents_ja')->rollback();
+            Log::debug('message:'.'floor table write error'.
+                        ' exception:'.$e);
         }
 
     }
