@@ -9,7 +9,7 @@ class FloorShopBind extends Model
 {
     use HasFactory;
 
-    protected $table='floor_shop_bind';
+    protected $table='floor_shop_binds';
 
     protected $guarded = [
         'id',

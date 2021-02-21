@@ -16,7 +16,6 @@ class CreateShopDataTable extends Migration
         Schema::connection('contents_ja')->create('shop_data', function (Blueprint $table) {
             $table->id();
             $table->string('db_key', 16);
-            $table->bigInteger('landmark_id');
             $table->string('shop_name');
             $table->string('about');
             $table->date('start_date');

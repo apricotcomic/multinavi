@@ -18,18 +18,11 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($landmark_coordinate_id, $floor_coordinate_id)
+    public function index()
     {
         //
-        $shops = DB::table('shop_coordinates')
-            ->join('shop_data', function($join) use($landmark_coordinate_id) {
-                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id)
-                    ->where('shop_data.db_key', '=', Auth::user()->db_key);
-            })
-            ->orderby('floor_coordinate_id')
-            ->get();
-        return view('shop/index', compact('landmark_coordinate_id', 'floor_coordinate_id', 'shops'));
+        $shops = Shopdata::all();
+        return view('shop/index', compact('shops'));
     }
 
     /**
@@ -37,19 +30,10 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create()
     {
-        $landmark_coordinate_id = $id;
         //
-        $floors = DB::table('floor_coordinates')
-        ->join('floor_data', function($join) use($landmark_coordinate_id) {
-            $join->on('floor_coordinates.id', '=', 'floor_data.floor_coordinate_id')
-                ->where('floor_coordinates.landmark_coordinate_id', '=', $landmark_coordinate_id)
-                ->where('shop_data.db_key', '=', Auth::user()->db_key);
-            })
-        ->pluck('floor_name','floor_data.id');
-
-        return view('shop.create', compact('landmark_coordinate_id','floors'));
+        return view('shop.create');
     }
 
     /**
@@ -64,30 +48,15 @@ class ShopController extends Controller
         if($request->action === 'back') {
             return redirect()->route('shop.index');
         } else {
-            // shop_coordinates insert
-            $shop_coordinate = new ShopCoordinate();
-            $shop_coordinate->landmark_coordinate_id = $request->landmark_coordinate_id;
-            $shop_coordinate->floor_coordinate_id = $request->floor_name;
-            $shop_coordinate->x1_coordinate = $request->x1;
-            $shop_coordinate->x2_coordinate = $request->x2;
-            $shop_coordinate->y1_coordinate = $request->y1;
-            $shop_coordinate->y2_coordinate = $request->y2;
-            $shop_coordinate->x_point_coordinate = $request->x_point;
-            $shop_coordinate->y_point_coordinate = $request->y_point;
-            $shop_coordinate->start_date = $request->start_date;
-            $shop_coordinate->end_date = $request->end_date;
-            $shop_coordinate->save();
             // shop_data insert
             $shop_data = new shopData();
-            $shop_data->shop_coordinate_id = $shop_coordinate->id;
             $shop_data->db_key = Auth::user()->db_key;
             $shop_data->shop_name = $request->name;
             $shop_data->about = $request->about;
+            $shop_data->start_date = $request->start_date;
+            $shop_data->end_date = $request->end_date;
             $shop_data->save();
-            return redirect()->route('shop.index',
-                ['landmark_coordinate_id' => $shop_coordinate->landmark_coordinate_id,
-                'floor_coordinate_id' => $shop_coordinate->floor_coordinate_id,
-            ]);
+            return redirect()->route('shop.index');
         }
     }
 

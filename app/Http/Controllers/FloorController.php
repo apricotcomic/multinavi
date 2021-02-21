@@ -6,6 +6,7 @@ use Auth;
 use App\Models\FloorCoordinate;
 use App\Models\FloorData;
 use App\Services\FloorService;
+use App\Services\FloorShopBind;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -84,10 +85,10 @@ class FloorController extends Controller
             })
             ->first();
 
-        $shops = DB::table('shop_coordinates')
-            ->join('shop_data', function($join) use($floor) {
-                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.floor_coordinate_id', '=', $floor->floor_coordinate_id);
+        $shops = DB::table('shop_data')
+            ->join('floor_shop_binds', function($join) use($floor) {
+                $join->on('shop_data.id', '=', 'floor_shop_binds.shop_data_id')
+                    ->where('shop_data.db_key', '=', Auth::user()->db_key);
             })
             ->get();
         return view('floor/show', compact('floor', 'shops'));

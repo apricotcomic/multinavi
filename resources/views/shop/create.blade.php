@@ -1,6 +1,6 @@
 <x-layout>
     <h2  class="text-2xl">shop Create</h2>
-    <form action="{{ route('shop.store', ['landmark_coordinate_id' => $landmark_coordinate_id]) }}" method="post">
+    <form action="{{ route('shop.store') }}" method="post">
         @csrf
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
          type="submit" name="action" value="edit">
@@ -25,42 +25,6 @@
                 </td>
                 <td>
                     <input type="text" name="about">
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">
-                    <span class="px-2 py-4">Floor</span>
-                </td>
-                <td>
-                    {{Form::select('floor',$floors,null,['class' => 'form','name' => 'floor_name'])}}
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">
-                    <span class="px-2 py-4">Longitude From</span>
-                </td>
-                <td>
-                    <input type="text" name="x1">
-                </td>
-                <td class="text-right">
-                    <span class="px-2 py-4">To</span>
-                </td>
-                <td>
-                    <input type="text" name="x2">
-                </td>
-            </tr>
-            <tr>
-                <td class="text-right">
-                    <span class="px-2 py-4">Latitude From</span>
-                </td>
-                <td>
-                    <input type="text" name="y1">
-                </td>
-                <td class="text-right">
-                    <span class="px-2 py-4">To</span>
-                </td>
-                <td>
-                    <input type="text" name="y2">
                 </td>
             </tr>
             <tr>
@@ -94,6 +58,5 @@
                 </td>
             </tr>
         </table>
-        <input type="hidden" name="landmark_coordinate_id" value="{{ $landmark_coordinate_id }}">
     </form>
 </x-layout>

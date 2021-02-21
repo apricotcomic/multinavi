@@ -42,7 +42,7 @@ Route::put('floor/{floor_coordinate_id}', [FloorController::class, 'update'])->n
 Route::delete('floor/{floor_coordinate_id}', [FloorController::class, 'destroy'])->name('floor.destroy');
 
 Route::get('shop/index', [ShopController::class, 'index'])->name('shop.index');
-Route::get('shop/create/{landmark_coordinate_id}', [ShopController::class, 'create'])->name('shop.create');
+Route::get('shop/create', [ShopController::class, 'create'])->name('shop.create');
 Route::post('shop', [ShopController::class, 'store'])->name('shop.store');
 Route::get('shop/{shop_coordinate_id}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('shop/{shop_coordinate_id}/edit', [ShopController::class, 'edit'])->name('shop.edit');
