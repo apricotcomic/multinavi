@@ -42,12 +42,7 @@ class ShopItemBindController extends Controller
     public function show($id)
     {
         //
-        $shop = DB::table('shop_coordinates')
-            ->join('shop_data', function($join) use($id) {
-                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.id', '=', $id);
-            })
-            ->first();
+        $shop = ShopData::find($id);
 
         $items = DB::table('shop_item_binds')
             ->join('item_data', function($join) use($id) {
@@ -83,12 +78,7 @@ class ShopItemBindController extends Controller
     public function edit($id)
     {
         //
-        $shop = DB::table('shop_coordinates')
-            ->join('shop_data', function($join) use($id) {
-                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.id', '=', $id);
-            })
-            ->first();
+        $shop = ShopData::find($id);
 
         $items = ItemData::all();
 

@@ -86,7 +86,8 @@ class FloorController extends Controller
             ->first();
 
         $shops = DB::table('shop_data')
-            ->join('floor_shop_binds', function($join) use($floor) {
+            ->select('shop_data.*','floor_shop_binds.floor_coordinate_id')
+            ->leftjoin('floor_shop_binds', function($join) {
                 $join->on('shop_data.id', '=', 'floor_shop_binds.shop_data_id')
                     ->where('shop_data.db_key', '=', Auth::user()->db_key);
             })

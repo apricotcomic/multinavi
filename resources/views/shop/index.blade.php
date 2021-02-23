@@ -19,8 +19,8 @@
                 @if(isset($shops))
                     @foreach ($shops as $shop)
                         <tr>
-                            <th><a href="{{ route('shop.show', $shop->shop_coordinate_id )}}">{{ $shop->shop_coordinate_id }}</a></td>
-                            <th><a href="{{ route('shop.show', $shop->shop_coordinate_id )}}">{{ $shop->shop_name }}</a></td>
+                            <th><a href="{{ route('shop.show', $shop->id )}}">{{ $shop->id }}</a></td>
+                            <th><a href="{{ route('shop.show', $shop->id )}}">{{ $shop->shop_name }}</a></td>
                             <th>{{ $shop->floor_coordinate_id }}</td>
                             <th>{{ $shop->about }}</td>
                         </tr>

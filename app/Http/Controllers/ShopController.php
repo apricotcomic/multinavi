@@ -69,13 +69,7 @@ class ShopController extends Controller
     public function show($id)
     {
         //
-        $shop = DB::table('shop_coordinates')
-            ->join('shop_data', function($join) use($id) {
-                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.id', '=', $id)
-                    ->where('shop_data.db_key', '=', Auth::user()->db_key);
-            })
-            ->first();
+        $shop = Shopdata::find($id);
         return view('shop/show', compact('shop'));
     }
 
@@ -88,13 +82,7 @@ class ShopController extends Controller
     public function edit($id)
     {
         //
-        $shop = DB::table('shop_coordinates')
-        ->join('shop_data', function($join) use($id) {
-            $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                ->where('shop_coordinates.id', '=', $id)
-                ->where('shop_data.db_key', '=', Auth::user()->db_key);
-        })
-        ->first();
+        $shop = ShopData::find($id);
 
         return view('shop/edit', compact($shop->shop_coordinate_id, 'shop'));
     }
@@ -112,27 +100,12 @@ class ShopController extends Controller
         if($request->action === 'back') {
             return redirect()->route('shop.index');
         } else {
-            // shop_coordinates insert
-            $shop_coordinate = ShopCoordinate::find($id);
-            $shop_coordinate->floor_coordinate_id = $request->floor;
-            $shop_coordinate->x1_coordinate = $request->x1;
-            $shop_coordinate->x2_coordinate = $request->x2;
-            $shop_coordinate->y1_coordinate = $request->y1;
-            $shop_coordinate->y2_coordinate = $request->y2;
-            $shop_coordinate->x_point_coordinate = $request->x_point;
-            $shop_coordinate->y_point_coordinate = $request->y_point;
-            $shop_coordinate->start_date = $request->start_date;
-            $shop_coordinate->end_date = $request->end_date;
-            $shop_coordinate->save();
             // shop_data insert
-            $shop_data = ShopData::where('shop_coordinate_id', $id)->first();
+            $shop_data = ShopData::find($id);
             $shop_data->shop_name = $request->name;
             $shop_data->about = $request->about;
             $shop_data->save();
-            return redirect()->route('shop.index',
-                ['landmark_coordinate_id' => $shop_coordinate->landmark_coordinate_id,
-                'floor_coordinate_id' => $shop_coordinate->floor_coordinate_id,
-            ]);
+            return redirect()->route('shop.index');
         }
     }
 
@@ -145,14 +118,8 @@ class ShopController extends Controller
     public function destroy($id)
     {
         //
-        $shop_coordinate = ShopCoordinate::find($id);
-        $landmark_coordinate_id = $shop_coordinate->landmark_coordinate_id;
-        $shop_coordinate->delete();
         $shop_data = ShopData::find($id);
         $shop_data->delete();
-        return redirect()->route('shop.index',
-            ['landmark_coordinate_id' => $shop_coordinate->landmark_coordinate_id,
-            'floor_coordinate_id' => $shop_coordinate->floor_coordinate_id,
-        ]);
+        return redirect()->route('shop.index');
     }
 }
