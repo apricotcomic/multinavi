@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClassificationController;
 use App\Http\Controllers\FloorController;
+use App\Http\Controllers\FloorShopBindController;
 use App\Http\Controllers\ItemDataController;
 use App\Http\Controllers\LandmarkController;
 use App\Http\Controllers\MenuController;
@@ -61,3 +62,5 @@ Route::put('shopitembind/{id}', [ShopItemBindController::class, 'update'])->name
 Route::get('shopclassificationbind/{id}', [ShopClassificationBindController::class, 'show'])->name('shopclassificationbind.show');
 Route::get('shopclassificationbind/edit', [ShopClassificationBindController::class, 'edit'])->name('shopclassificationbind.edit');
 Route::put('shopclassificationbind', [ShopClassificationBindController::class, 'update'])->name('shopclassificationbind.update');
+
+Route::get('floorshopbind/edit/{id}', [FloorShopBindController::class, 'edit'])->name('floorshopbind.edit');

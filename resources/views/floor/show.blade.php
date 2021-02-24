@@ -101,7 +101,7 @@
     <br><br>
     <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
      type="button" value="Shop Index"
-        onclick="location.href='{{ route('shop.index') }}'">
+        onclick="location.href='{{ route('floorshopbind.edit', $floor->id) }}'">
     <table class="devide-y">
         <thead>
             <tr>

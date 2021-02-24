@@ -112,12 +112,14 @@ class FloorController extends Controller
             })
         ->first();
 
-        $shops = DB::table('shop_coordinates')
-            ->join('shop_data', function($join) use($floor) {
-                $join->on('shop_coordinates.id', '=', 'shop_data.shop_coordinate_id')
-                    ->where('shop_coordinates.floor_coordinate_id', '=', $floor->id);
+        $shops = DB::table('shop_data')
+            ->select('shop_data.*','floor_shop_binds.floor_coordinate_id')
+            ->leftjoin('floor_shop_binds', function($join) {
+                $join->on('shop_data.id', '=', 'floor_shop_binds.shop_data_id')
+                    ->where('shop_data.db_key', '=', Auth::user()->db_key);
             })
             ->get();
+
         return view('floor/edit', compact('floor', 'shops'));
     }
 

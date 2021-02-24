@@ -11,15 +11,10 @@
          type="button" onclick="history.back()">
             {{ __('back') }}
         </button>
+        <div class="w-max h-auto">
+            <img src="{{ asset('storage/' . $floor->landmark_coordinate_id . '/floor/' . $floor->floor_mapfile) }}" >
+        </div>
         <table>
-            <tr>
-                <td class=" text-right">
-                    <span class="px-2 py-4">Id</span>
-                </td>
-                <td>
-                    <input class="form-input h-8 px-2" type="text" name="id" value="{{ $floor->id }}">
-                </td>
-            </tr>
             <tr>
                 <td class=" text-right">
                     <span class="px-2 py-4">Name</span>
@@ -57,8 +52,6 @@
                 <td>
                     <input class="form-input h-8 w-28 px-2" type="text" name="y1" value="{{ $floor->y1_coordinate }}">
                 </td>
-            </tr>
-            <tr>
                 <td class=" text-right">
                     <span class="px-2 py-4">To</span>
                 </td>
@@ -81,8 +74,6 @@
                 <td>
                     <input class="form-input h-8 w-28 px-2" type="datetime" name="start_date">
                 </td>
-            </tr>
-            <tr>
                 <td class=" text-right">
                     <span class="px-2 py-4">EndDate</span>
                 </td>
