@@ -19,6 +19,10 @@ class CreateFloorShopBindsTable extends Migration
             $table->bigInteger('landmark_coordinate_id');
             $table->bigInteger('floor_coordinate_id');
             $table->bigInteger('shop_data_id');
+            $table->float('x_coordinate');
+            $table->float('y_coordinate');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

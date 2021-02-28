@@ -4,7 +4,7 @@
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
          type=button onclick="location.href='{{ route('shop.create') }}'">{{ __('add') }}</button>
         <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
-         type=button value="{{ __('back') }}" onclick="history.back()">
+         type=button value="{{ __('back') }}" onclick="location.href='{{ route('multinavi.menu') }}'">
         <br><br>
         <table class="divide-y">
             <thead>
