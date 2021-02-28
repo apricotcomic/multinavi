@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClassificationController;
+use App\Http\Controllers\DataAccessController;
 use App\Http\Controllers\FloorController;
 use App\Http\Controllers\FloorShopBindController;
 use App\Http\Controllers\ItemDataController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ShopClassificationBindController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ShopItemBindController;
+use App\Models\ShopData;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,3 +66,5 @@ Route::get('shopclassificationbind/edit', [ShopClassificationBindController::cla
 Route::put('shopclassificationbind', [ShopClassificationBindController::class, 'update'])->name('shopclassificationbind.update');
 
 Route::get('floorshopbind/edit/{id}', [FloorShopBindController::class, 'edit'])->name('floorshopbind.edit');
+
+Route::get('dataaccess/shopall', [DataAccessController::class, 'shopall'])->name('shopall');

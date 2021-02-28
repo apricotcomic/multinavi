@@ -14,23 +14,7 @@
         <div class="w-max h-auto">
             <img src="{{ asset('storage/' . $floor->landmark_coordinate_id . '/floor/' . $floor->floor_mapfile) }}" >
         </div>
-        <table class="devide-y">
-            <thead>
-                <tr>
-                    <th>{{ __('Name') }}</th>
-                    <th>{{ __('About') }}</th>
-                </tr>
-            </thead>
-            <tbody class="devide-y">
-                @if(isset($shops))
-                    @foreach ($shops as $shop)
-                        <tr>
-                            <td class="px-6 py-4">{{ $shop->shop_name }}</td>
-                            <td class="px-6 py-4">{{ $shop->about }}</td>
-                        </tr>
-                    @endforeach
-                @endif
-            </tbody>
-        </table>
     </form>
+    <mapflag-component></mapflag-component>
+
 </x-layout>

@@ -1,11 +1,11 @@
 require('./bootstrap');
 import Vue from 'vue'
-import draggable from 'vuedraggable'
 import MapFlag from './components/MapFlag'
+
+window.Vue = require('vue');
+
+Vue.component('mapflag-component', require('./components/MapFlag.vue').default)
 
 const app = new Vue({
   el: '#app',
-  components: {
-    mapflag,
-  }
 })
