@@ -11,10 +11,11 @@
          type="button" onclick="history.back()">
             {{ __('back') }}
         </button>
-        <div class="w-max h-auto">
-            <img src="{{ asset('storage/' . $floor->landmark_coordinate_id . '/floor/' . $floor->floor_mapfile) }}" >
-        </div>
+
     </form>
-    <mapflag-component></mapflag-component>
+    <mapflag-component :shops="{{ $shops }}"
+         floormap="{{ asset('storage/' . $floor->landmark_coordinate_id . '/floor/' . $floor->floor_mapfile) }}"
+         pin="{{ asset('storage/pin.png') }}">
+    </mapflag-component>
 
 </x-layout>

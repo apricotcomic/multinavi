@@ -1908,8 +1908,11 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1928,18 +1931,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+/* eslint-disable no-console */
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    shops: Array,
+    floormap: String,
+    pin: String
+  },
   data: function data() {
     return {
-      shops: []
+      offsetx: 0,
+      offsety: 0,
+      mapElement: "",
+      mapLocate: 0,
+      mapTop: 0,
+      pinFlag: false,
+      pinPosition: ""
     };
   },
-  mounted: function mounted() {
-    var _this = this;
-
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/dataaccess/shopall').then(function (response) {
-      return _this.shops = response.data;
-    });
+  methods: {
+    locationset: function locationset(e) {
+      this.offsetx = e.offsetX;
+      this.offsety = e.offsetY;
+      this.mapElement = document.getElementById("map");
+      this.mapLocate = this.mapElement.getBoundingClientRect();
+      this.mapTop = this.mapLocate.top + this.offsety - 16;
+      this.pinFlag = true;
+      this.pinPosition = "position: absolute;top: " + this.mapTop + ";left: " + this.offsetx;
+    }
   }
 });
 
@@ -19593,31 +19612,55 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-8" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Example Component")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c(
-              "ul",
-              _vm._l(_vm.shops, function(shop) {
-                return _c("li", { key: shop.id }, [
-                  _vm._v(_vm._s(shop.shop_name))
-                ])
-              }),
-              0
-            )
+  return _c("div", { attrs: { id: "map" }, on: { click: _vm.locationset } }, [
+    _c("div", { staticClass: "w-max h-auto" }, [
+      _c("img", { attrs: { src: _vm.floormap } })
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("img", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.pinFlag,
+            expression: "pinFlag"
+          }
+        ],
+        style: _vm.pinPosition,
+        attrs: { src: _vm.pin, name: "pin" }
+      })
+    ]),
+    _vm._v(" "),
+    _c("table", [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.shops, function(shop) {
+          return _c("tr", { key: shop.id }, [
+            _c("td", [_vm._v(_vm._s(shop.shop_name))]),
+            _vm._v(" "),
+            _c("td", [
+              _vm._v(
+                "offset: " + _vm._s(_vm.offsetx) + "/" + _vm._s(_vm.offsety)
+              )
+            ])
           ])
-        ])
-      ])
+        }),
+        0
+      )
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [_c("th", [_vm._v("shop name")])])
+  }
+]
 render._withStripped = true
 
 
